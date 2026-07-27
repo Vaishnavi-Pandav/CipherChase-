@@ -19,19 +19,17 @@ const Header = () => {
       <div className="w-full flex items-center justify-center">
         {/* Upsurge logo */}
         <div
-          className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl border-2 p-1.5 hover:scale-110 transition-transform"
+          className="w-20 h-20 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden hover:scale-110 transition-transform"
           style={{
-            borderColor: "rgba(139,0,0,0.7)",
-            boxShadow: "0 0 16px rgba(139,0,0,0.6), inset 0 0 8px rgba(139,0,0,0.15)",
-            animation: "border-blood 3s ease-in-out infinite",
+            boxShadow: "0 0 20px rgba(139,0,0,0.7)",
           }}
         >
           <Image
             src="/img/upsurge-logo.png"
             alt="Upsurge Logo"
-            width={80}
-            height={80}
-            className="w-full h-full object-contain"
+            width={112}
+            height={112}
+            className="w-full h-full object-cover"
           />
         </div>
 
@@ -67,18 +65,17 @@ const Header = () => {
 
         {/* Cosmos logo */}
         <div
-          className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl border-2 p-1.5 hover:scale-110 transition-transform"
+          className="w-20 h-20 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden hover:scale-110 transition-transform"
           style={{
-            borderColor: "rgba(201,168,76,0.6)",
-            boxShadow: "0 0 16px rgba(201,168,76,0.4), inset 0 0 8px rgba(201,168,76,0.1)",
+            boxShadow: "0 0 16px rgba(201,168,76,0.5)",
           }}
         >
           <Image
             src="/img/cosmos-logo.png"
             alt="Cosmos Logo"
-            width={80}
-            height={80}
-            className="w-full h-full object-contain"
+            width={112}
+            height={112}
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
