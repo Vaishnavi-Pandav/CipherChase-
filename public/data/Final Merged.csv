@@ -1,0 +1,147 @@
+﻿Question,Opt A,Opt B,Opt C,Opt D,Correct
+"I can paddle without hands, float without a raft, and some of my kind hunt in water. Who am I?",Dog,Tiger,Elephant,Horse,D
+"In C programming, what is the correct output type for sizeof('A') on a 64-bit GCC compiler?",1,4,8,Depends on flags,B
+"If a data packet leaves Server Alpha at 1 Gbps and a coffee spill on the network switch reduces speed by 50%, how long until your patience crashes?",Temporal Dissipation Interval,Latency Amplification Constant,Throughput Diminution Epoch,Buffer Overflow Moment,C
+Decode the given into correct word: 'isntel'?,listen,silent,tinsel,enlist,B
+"Imagine a hypothetical scenario in which a collection of various objects including but not limited to apples, oranges, screws, and coins is placed upon a flat surface; after a brief discussion about the nutritional values of fruit, the corrosion rate of metals, and the philosophical meaning of “surface area,” someone casually remarks that only one of these objects is edible without preparation, hinting that the spherical, vitamin-rich option is the focus, despite prior diversions about metallic oxidation.",Orange,Screw,Coin,Marble,A
+"The game ""X of Y,"" also searchable on Google as the ""Y Number,"" involves linking actor Y to other actors through their film roles. What is this game commonly called? ",The Marlon Brando Method,The Hollywood Chain,Six Degrees of Kevin Bacon,The Charlie Chaplin Effect,C
+"I can be eaten raw, made into juice, and some call me a berry (though I’m not). Which am I?",Tomato,Banana,Mango,Avocado,B
+"In HTML5, which attribute removes the need for type=""text/javascript"" in <script> tags?",async,default,language,HTML5 autodetect,D
+"In a programming contest, you must sort socks by color using only bubble sort — which variable best describes your mood?",Algorithmic Despondency Index,Computational Ennui Quotient,Sort-Induced Exasperation Metric,Time-Complexity Melancholia,A
+Decode the given into correct word: 'carets'?,carets,caster,traces,reacts,A
+"In a convoluted description of a rural setting involving the migration of birds, the flow of a river, the color of a barn, and the peculiar behavior of a goat staring at the sky, the narrator slips in a mention that the only structure with a roof in sight is the red building where grain is stored, subtly identifying the barn amidst irrelevant details.",Tree,Barn,River,Hill,B
+"The Indian fast-food chain Burger Singh has a vegetarian combo called ""two inseparable burgers,"" inspired by the main characters of an iconic 1994 film. What is the movie and the combo name? ",Sholay & Jai Veeru,Andaz Apna Apna & Amar Prem,Dilwale Dulhania Le Jayenge & Raj Simran,Karan Arjun & Karan Arjun,B
+"I may be full of sand, but I’m not a beach; I might surprise you in the cold north or hot south. Where am I?",India,China,USA,Australia,B
+Which sorting algorithm has the best average case complexity among these for large datasets in practical use?,Merge Sort,Tim Sort,Heap Sort,Quick Sort,B
+Your compiler throws an error: “Unexpected existential dread at line 42.” What’s the probable fix?,Semantic Reality Reassignment,Syntax Reconciliation Directive,Ontological Parser Reset,Philosophy Constructs,B
+Decode the given into correct word: 'estno'?,stone,tones,notes,onset,D
+"Within a long-winded explanation of human history, covering topics from the invention of paper to the debate over pyramid construction techniques, a seemingly irrelevant note appears about an object on the wall that ticks rhythmically and points to numbers, revealing the answer indirectly.",Clock,Calendar,Compass,Sundial,A
+"Amala Ratna Zandile Dlamini created her stage name in 2012, with the first part coming from a marijuana strain and the second from her pet. Who is she? ",Cardi B,Doja Cat,Nicki Minaj,Megan Thee Stallion,B
+"I speak to computers in my own tongue, some of my names sound like animals or fruits. Who am I?",Python,Ruby,Swift,Go,C
+"In Python, what will 0.1 + 0.2 == 0.3 return?",TRUE,FALSE,Float precision,Error,B
+Which of these is the optimal storage unit for dreams about passing all exams?,Non-Volatile Ambition Memory,Random Access Hope Storage,Sequential Aspiration Buffer,Cloud-Based Grade Repository,D
+Decode the given into correct word: 'opst'?,post,spot,stop,tops,D
+"The passage meanders through discussions of coffee bean roasting, the migration of monarch butterflies, and the sound patterns of whale songs, until it quietly notes that the liquid in the cup is both black and aromatic, leading to an obvious beverage.",Tea,Coffee,Juice,Cola,B
+"In 1997, after discovering a lack of media coverage for the Champions' Trophy in Sharjah, this English cricket enthusiast founded a website, now accessed via Cricinfo, to cover the event. Who is he? ",Tony Greig,Geoffrey Boycott,Richie Benaud,Peter Griffith,D
+"I’m a silent river for electricity; jewelry loves me, wires need me. Which am I?",Copper,Gold,Silver,Aluminium,A
+"In DBMS, which isolation level prevents dirty reads, non-repeatable reads, and phantom reads?",Read Committed,Repeatable Read,Serializable,Snapshot Isolation,C
+A CPU overheats and starts giving life advice. Which register is most likely corrupted?,Stack of Regrets Pointer,Instruction of Destiny Counter,Memory of Lost Opportunities,Accumulator of Life Choices,B
+Decode the given into correct word: 'cinema'?,cinema,anemic,iceman,amine,C
+"Amid talk of car engine pistons, architectural arches, and ancient Roman aqueducts, the text briefly says that the only thing in the room that gives off light in darkness is mounted to the ceiling and powered by electricity.",Candle,Lantern,Light Bulb,Moon,C
+"According to Wikipedia's most popular articles of 2023, what were the films X (at #7) and Y (at #10)? ","X: Oppenheimer, Y: Barbie","X: Jawan, Y: Pathaan","X: Guardians of the Galaxy Vol. 3, Y: Spider-Man: Across the Spider-Verse","X: Animal, Y: Gadar 2",B
+"I bounce, I roll, I fly over nets; I’m the heart of many games. What am I?",Cricket,Basketball,Tennis,Volleyball,C
+What will be the value of x after executing x = x++ + ++x; when x=5 in Java?,12,13,14,Undefined Behavior,B
+"In database terms, which normal form ensures no repeated nightmares before semester results?",Third Subconscious Form,Boyce–Codd Daydream Form,First Lucid Reality Form,Fifth Parallel Universe Form,A
+Decode the given into correct word: 'earth'?,earth,heart,hater,rathe,A
+"An overly complex narrative covers everything from cloud classifications to medieval armor designs, then abruptly mentions that the soft object you sleep on is where you last misplaced your phone, hidden under a pillow.",Chair,Bed,Sofa,Hammock,B
+Identify the Indian duo (X) and its two members (Y and Z) who released the platinum-selling album 'X' in 1996 and won an MTV Asia Viewer's choice award.,"X: Indian Ocean, Y: Rahul Ram, Z: Amit Kilam","X: Euphoria, Y: Palash Sen, Z: Debajyoti Bhaduri","X: Colonial Cousins, Y: Hariharan, Z: Lesle Lewis","X: Fuzön, Y: Shafqat Amanat Ali, Z: Emu",C
+"I travel with companions that circle me; some of us have dozens, some just one. Which am I?",Earth,Jupiter,Saturn,Mars,B
+"In networking, which layer handles encryption in the OSI model by default?",Application,Presentation,Session,Transport,B
+A student encrypts their notes using “Procrastination Cipher v3.0.” What’s the decryption key?,Deadline Anxiety Constant,Sleep Deprivation Hash,Coffee Consumption Index,Last-Minute Miracle Code,D
+Decode the given into correct word: 'salter'?,alerts,alters,slater,staler,A
+"After describing the diet of penguins, the density of icebergs, and the chemical formula for salt, the passage suddenly mentions that the only thing in the room that opens to let someone leave is made of wood with a handle.",Door,Window,Gate,Cabinet,A
+"Originating from a 1999 Nickelodeon episode ""I Was a Teenage Gary,"" these items have been used over 60 times in the series and became popular in Rage Comics. What are they? ",Krabby Patty Secret Formulas,Plankton's Inventions,SpongeBob Time Cards,Squidward's Clarinet Solos,C
+"Without me you can’t live, without me your bones weaken, without me your muscles fade. What am I?",Water,Calcium,Iron,Protein,C
+"In CSS, which selector has the highest specificity?",ID selector,Inline style,Class selector,Attribute selector,B
+Your AI assistant refuses to answer until it’s given pizza. Which machine learning model is it running?,Convolutional Appetite Network,Recurrent Snack Memory,Generative Hunger Transformer,Support Vector Pizza,C
+Decode the given into correct word: 'ramest'?,master,stream,tamers,armets,C
+"A discussion begins about art history, digresses into train timetables, explores volcanic rock types, and then nonchalantly mentions that the rectangular transparent thing you can look through is made of glass and part of the wall.",Window,Screen,Painting,Mirror,A
+"This fruit (X) contains the hormone auxin and exhibits negative geotropism, causing it to curve upwards towards the sun as it grows. It's also a favourite food of certain fictional yellow creatures. What is it? ",Pineapple,Mango,Banana,Papaya,C
+"I fill the air, I’m light as nothing, yet lift balloons high. Who am I?",Oxygen,Nitrogen,Helium,Hydrogen,D
+"In Linux, which signal number is sent by default when you run kill <PID>?",9,15,2,Depends on shell,B
+"In a formal meeting, someone says, “We’ll circle back on that bandwidth hog.” What is this in technical terms?",Recursive Attention Loop,Packet Loss Personification,Network Latency Anthropomorphism,Agile Iteration Paradox,A
+Decode the given into correct word: 'integral'?,integral,triangle,relating,alerting,D
+"In between a treatise on solar flares, bee pollination habits, and the taste profile of cinnamon, the author drops a quick line saying the object in your hand used to write these notes contains ink and has a cap.",Pencil,Pen,Marker,Chalk,B
+Former Swiss Olympic shooter Gabriele Buhlmann is best known to Indians for her role in the 2008 Beijing Olympics. What was that role?,She was the official referee for the shooting final,She designed the rifles used by the Indian team,She was Abhinav Bindra's coach,She was a commentator for Indian television,C
+"I’m on roads worldwide, but I began in a workshop; my emblem is my name’s signature. Who am I?",Toyota,BMW,Tesla,Ford,B
+"In JavaScript, typeof NaN returns?",NaN,Number,undefined,Object,B
+Which of these protocols is best for sending memes to your professor without judgment?,HyperText Humor Protocol,Secure Laugh Transfer Protocol,Giggle Datagram Service,Meme Control Message Protocol,B
+Decode the given into correct word: 'congratulations'?,carton,caution,actions,ration,D
+"The story rambles from sports tournaments to quantum particle spin, before unexpectedly pointing out that the object on your wrist shows time and is wearable.",Watch,Bracelet,Stopwatch,Ring,A
+"In mid-July 2022, tribal villagers from Uparbeda, Odisha, gathered for a mass prayer. What was the reason for this gathering? ",To celebrate a local harvest festival,To pray for Droupadi Murmu's victory in the Presidential election,To protest against a new development project,To mark the anniversary of a historical event,B
+"I fly on flags, proud in crimson; my color stands for blood, courage, or luck. Who am I?",Canada,Japan,China,Switzerland,A
+"In Git, what does git reset --hard HEAD~1 do?",Deletes last commit permanently,Removes commit but keeps changes,Moves HEAD but keeps files,Reverts commit with new commit,A
+Decode the given into correct word: 'permutation'?,unit,time,prime,mute,D
+"While elaborating on ocean currents, the boiling point of water, and the evolution of amphibians, a single remark indicates that the object that keeps you dry in rain has a collapsible canopy.",Umbrella,Raincoat,Tent,Tarp,A
+"Inspired by Swami Dayanand Saraswati and pioneered by Lala Hansraj in Lahore in 1886, this network of over 780 educational institutions blends Indian values with modern technology. What is it? ",Kendriya Vidyalayas,Delhi Public Schools (DPS),Ryan International Schools,D.A.V. (Dayanand Anglo-Vedic) Schools,D
+"I breathe air, feed milk to my young, and live in water, sky, or land. What am I?",Dolphin,Bat,Human,Whale,D
+Which data structure is most efficient for implementing a priority queue?,Stack,Heap,Linked List,BST,B
+Decode the given into correct word: 'restoration'?,rotation,senator,relation,ornate,D
+"The narrative overexplains traffic patterns, jet engine thrust, and the shape of Saturn’s rings before revealing in passing that the footwear you’re wearing now is laced.",Slippers,Sandals,Shoes,Boots,C
+"A 1985 agreement for open borders was signed in this Luxembourg village, which was later renamed after the agreement itself in 2006. What is the location and the agreement it symbolizes? ",Maastricht,Geneva,Brussels,Schengen,D
+"I build muscles, repair tissues, and can be eaten in many forms. What am I?",Eggs,Chicken,Almonds,Lentils,D
+"In C, what is the output of printf(""%d"", printf(""Hello""));?",Hello5,Hello4,Hello,Compiler error,A
+Decode the given into correct word: 'atmosphere'?,phase,earth,metaphor,spear,D
+"There’s a long description of the Milky Way galaxy, famous explorers, and the process of making cheese, with one quiet statement that the metallic object in your pocket opens bottles.",Spoon,Knife,Bottle Opener,Key,C
+"In 1966, Seattle was awarded its first major-league sports franchise (X). The team was named Y as a nod to the city's aviation industry. The team later moved to Oklahoma City. Identify Y and X. ","Y: Mariners, X: MLB","Y: SuperSonics, X: NBA","Y: Seahawks, X: NFL","Y: Kraken, X: NHL",B
+"I open windows to the web, some say I’m fast as a fox, others polished like an apple. Who am I?",Chrome,Firefox,Safari,Edge,C
+"In HTTP/2, which feature reduces latency compared to HTTP/1.1?",Multiplexing,Chunked Transfer,Pipelining,SPDY Protocol,A
+Decode the given into correct word: 'conversation'?,reaction,creation,section,vector,C
+"After going through a deep discussion on dinosaur fossils, the periodic table, and rainfall measurement, the author notes that the object on the table displays moving images when switched on.",Radio,Television,Laptop,Projector,B
+"This word (X) originated from an Arabic phrase meaning ""the way over one's head"" and now refers to the highest or culminating point of something. ",Apex,Pinnacle,Zenith,Summit,C
+"I hum when plucked, sing when bowed, and can make a whole room dance. Who am I?",Guitar,Violin,Sitar,Harp,A
+"In Python, which module is used for decimal fixed-point and floating-point arithmetic with exact precision?",math,decimal,fractions,bigfloat,B
+Decode the given into correct word: 'boardgame'?,agenda,dream,badge,roam,C
+"The passage discusses weather vanes, the history of typewriters, and the role of sugar in baking, then slips in the fact that you just placed your coffee on a flat horizontal surface in front of you.",Chair,Table,Shelf,Floor,B
+"Derived from the Latin for ""a bundle of sticks,"" this word was associated with an ancient Roman symbol of authority (rods tied around an axe) and came to represent a political ideology. What is the word? ",Communism,Fascism,Socialism,Syndicalism,B
+"I come in pairs, divisible without remainder, and march two by two. Who am I?",2,4,6,8,A
+Which SQL clause is executed first logically?,SELECT,FROM,WHERE,GROUP BY,B
+Decode the given into correct word: 'nightmare'?,margin,night,ramie,heir,C
+"A labyrinthine explanation of the postal system, mountain climbing, and bird anatomy eventually remarks that the item used to cut paper has two metal blades joined at a pivot.",Knife,Scissors,Cutter,Razor,B
+"In the 1958 FIFA World Cup, Brazilian manager Vicente Feola told his team to get the ball to player X, who then created ""the greatest three minutes of football."" Who was X, often called the greatest dribbler ever? ",Pelé,Didi,Vavá,Garrincha,D
+"I flow from mountains to sea, worshiped by millions along my banks. Who am I?",Ganga,Yamuna,Godavari,Narmada,C
+"In computer architecture, which cache mapping method can place a block anywhere in the cache?",Direct Mapping,Fully Associative,Set Associative,Random Replacement,B
+Decode the given into correct word: 'houseplant'?,honest,planet,plane,lash,D
+"The text jumps between chemical reactions, famous bridges, and types of clouds, then casually mentions the round object used in the game of football.",Cone,Bat,Ball,Net,C
+"In 2001, the Grand Mufti of Saudi Arabia issued a fatwa banning which popular franchise, claiming it promoted Zionism, Christianity, and gambling? ",Pokémon,Yu-Gi-Oh!,Magic: The Gathering,Dungeons & Dragons,A
+"I’m the heart of my country, home to palaces and parliaments. Who am I?",Paris,London,Tokyo,Rome,D
+"In Java, what happens if main is declared as private?",Compilation Error,Runtime Error,Runs normally,JVM ignores main,C
+Decode the given into correct word: 'headstrong'?,strange,strand,grand,shorted,C
+"After discussing bus timetables, the fall of ancient empires, and types of fish, there’s an aside about the object that holds coins in your pocket.",Bag,Wallet,Purse,Box,C
+"What is the acronym (X) for the sentiment of residents opposing new developments in their local area, but who would be fine if it were built elsewhere? ",BANANA,LULU,CAVE,NIMBY,D
+"I’m a blanket in the sky, sometimes fluffy, sometimes thin as silk. What am I?",Cirrus,Cumulus,Stratus,Nimbus,D
+Which algorithm is used in public key cryptography?,AES,RSA,SHA-256,MD5,B
+Decode the given into correct word: 'brainstorm'?,storm,brain,riot,transform,D
+"The narrative drifts through stories about famous painters, the anatomy of frogs, and the structure of snowflakes before mentioning the object that lets you see in the dark with a battery-powered beam.",Flashlight,Lamp,Candle,Torch,A
+"During the Battle of Britain, the government popularized a myth to hide its new radar technology, which was the real reason for RAF pilots' improved night-time success. What was the myth? ",The pilots had genetically superior eyesight,Eating carrots improves night vision,Their planes were equipped with silent engines,They were guided by trained owls,B
+"I keep you awake, make your heart race, and hide in beans, leaves, or cocoa. What am I?",Coffee,Tea,Cola,Dark Chocolate,D
+"In OS, which scheduling algorithm may cause starvation?",FCFS,Round Robin,Priority Scheduling,Shortest Job First,D
+"After considering road construction methods, famous novels, and mineral mining, the writer inserts a line about the device that lets you speak to someone far away instantly.",Telephone,Telegram,Letter,Radio,A
+"This famous company originated as a group of 14 gunsmiths who collaborated, with War Office support, to manufacture guns by machinery before adapting to produce other famous vehicles. Which company is it? ",Royal Enfield,Triumph,BSA (Birmingham Small Arms Company),Norton,C
+"I leave a trail of words wherever I touch; I can be ink, graphite, dust, or dye. Who am I?",Pen,Pencil,Chalk,Marker,D
+"In IPv6, how many bits are in an address?",32,64,128,256,C
+"In a sea of details about baking bread, programming languages, and the length of the Amazon River, one sentence quietly mentions the flat tool used to dig soil.",Hoe,Spade,Rake,Shovel,B
+"A supervillain, who appeared in a film from the early 2010s featuring a scene at Mehrangarh Fort, is believed to be inspired by Madame Defarge from ""A Tale of Two Cities."" Who is the supervillain? ",The Joker,Bane,Ra's al Ghul,Scarecrow,B
+"I’m a school of thought for machines, teaching them my way to solve problems. What am I?",Object-Oriented,Functional,Procedural,Declarative,D
+"In HTML, which element is block-level by default?",span,div,b,em,B
+"The story wanders from whale migration to the rules of cricket, then unexpectedly mentions that the cold storage appliance in your kitchen keeps ice cream solid.",Freezer,Cooler,Refrigerator,Icebox,A
+"In 2018, a Saudi Arabian beauty pageant for animals (Y) was rocked by a scandal where a dozen contestants were disqualified for using a 5-letter substance (X) for enhancement. Identify X and Y. ","X: Paint, Y: Horses","X: Scars, Y: Falcons","X: Botox, Y: Camels","X: Drugs, Y: Salukis",C
+"I’m part of the world’s biggest games, where medals shine and anthems rise. What am I?",Swimming,Gymnastics,Archery,Boxing,C
+"In compiler design, which phase checks syntax errors?",Lexical Analysis,Syntax Analysis,Semantic Analysis,Code Generation,B
+"A drawn-out commentary on energy conservation, Shakespearean plays, and bicycle gears eventually hints that the only moving vehicle in the driveway has four wheels.",Car,Bicycle,Bus,Tractor,A
+Club 33 is an exclusive private club first opened in 1967. It was notably the only location within this larger establishment (X) to serve alcohol. What is X?,Universal Studios,Six Flags,SeaWorld,Disneyland,D
+"I’m indivisible by all but one and myself, and I’m proud to be odd. Who am I?",2,3,5,7,C
+Which sorting algorithm is not stable?,Merge Sort,Quick Sort,Bubble Sort,Insertion Sort,B
+"The text moves between cloud seeding, sewing techniques, and Mars exploration, before saying that the object strapped on your shoulder carries books.",Satchel,Suitcase,Backpack,Tote,C
+"What is the phrase meaning ""to overreact,"" which originated from WWII bombers where a crew might bail out unnecessarily due to a minor issue triggering the warning system? ",Sounding the alarm,Jumping the gun,Pushing the panic button,Flying off the handle,C
+"I wear feathers, I hatch from eggs, but I don’t all fly. Who am I?",Peacock,Sparrow,Penguin,Ostrich,C
+"In C++, which keyword is used to prevent method overriding?",const,static,final,override,C
+"Amid ramblings on currency exchange, space debris, and musical notes, a sentence notes that the only object in the room with pages and a cover is for reading.",Magazine,Book,Notebook,Diary,B
+"Identify the song (X) and the band (Y) mentioned in the movie 'Con Air,' known for being a response to a Neil Young song and for the band's tragic death in a plane crash. ","X: Free Bird, Y: The Allman Brothers Band","X: Fortunate Son, Y: Creedence Clearwater Revival","X: Sweet Home Alabama, Y: Lynyrd Skynyrd","X: Born to Run, Y: Bruce Springsteen",C
+"I speak at the UN, not with a mouth but with a tongue of nations. Who am I?",English,French,Spanish,Arabic,D
+"In Python, which statement is used to manually raise an exception?",throw,raise,except,assert,B
+"The story spans the invention of the wheel, color theory, and famous waterfalls, but slips in a remark about the object on the desk that moves a cursor on a screen.",Mouse,Keyboard,Trackpad,Joystick,A
+"The band X took its name from the 1947 play 'All My Sons,' where a contractor's decision to ship faulty plane parts during WWII has a fatal consequence. What happens as a result? ",The contractor is given a medal,The planes successfully complete their mission,Twenty one pilots are killed,The factory is shut down,C
+"I’m a continent’s pride, bordered by seas, mountains, and history. Who am I?",Germany,France,Italy,Spain,C
+"In computer networks, which protocol is connection-oriented?",UDP,TCP,IP,ICMP,B
+"Between anecdotes about skiing, honeybees, and jazz music, there’s a hint that the hot drink in your mug is made by steeping leaves.",Coffee,Tea,Cocoa,Soup,B
+"A neurological condition also known as Todd's syndrome, where one's perception of size, time, and touch is distorted, is more popularly named after what creation (X)? ",Peter Pan,Alice in Wonderland,The Wizard of Oz,Peter Rabbit,B
+"I link to the world without wires, living in pockets, laps, and walls. Who am I?",Smartphone,Laptop,Smart TV,Tablet,D
+"In DBMS, which join returns all rows from both tables regardless of match?",INNER JOIN,LEFT JOIN,RIGHT JOIN,FULL OUTER JOIN,D
+"The passage shifts from global warming, to the mechanics of elevators, to medieval castles, then remarks that the metallic object you turn to start your car is small and jagged.",Key,Switch,Button,Lever,A
+"I’m a toolkit for creators, helping code build dreams faster. Who am I?",Angular,Django,Laravel,React,C
+"In Java, which collection class allows null keys and null values?",Hashtable,ConcurrentHashMap,TreeMap,HashMap,D
+"After talking about desert ecosystems, electric circuits, and origami folding, a casual line says that the only wearable object showing numerals is on your wrist.",Watch,Bracelet,Ring,Locket,A
+"I’m perfectly balanced in my sides, wearing symmetry like a crown. Who am I?",Square,Rhombus,Equilateral Triangle,Regular Pentagon,B
+"In web security, what does XSS stand for?",XML Style Sheet,Cross Site Scripting,Cross Server Session,Xtreme Secure System,B
+"The elaborate text covers submarine design, the Great Wall of China, and the evolution of cats, then quietly notes that the green plant in the corner of the room is alive and growing.",Cactus,Tree,Fern,Orchid,C

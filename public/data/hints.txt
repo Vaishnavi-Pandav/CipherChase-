@@ -1,0 +1,39 @@
+Lift : LKKBoDUy
+hint: "Na tyre, na rail par chalti hoon, Floor se floor tak tum le jaati hoon. Button dabte hi khulti meri dehleez, Guess karo, main kaun hoon is CSE ki breeze?",
+
+Canteen : YDDm505s
+hint: "Na kitab, na board, bas comfort yahan, Friends ke saath guzar jaate breaks ke raan. Khushbu se pehchano is jagah ka naam, Har break ka main intezaam.",
+
+Mandir: tyRKA5ZM
+hint: "Shor se door, shanti ka asra, Haathon mein judta sab ka basera. Ghanti ki goonj, sukh ka pal, Kaun si jagah banaye mann nirmal?",
+
+Mech workshop : 62tMOzMe
+hint: "Lohe aur machines ka yeh ghar, Tools ki goonj sunai padti har pehar. Mandir ke paas, jahan bacche paani bharne aate, Yeh hai wo jagah jahan lohe ke raaz samjhate.",
+
+
+Chem lab first year : b5X7r9yG
+hint: "Samne se nahi, par piche se hai raasta, Beaker, flask aur pipette ka hai yeh basta. Experiments aur theory ka hai yeh saathi, Batao kaun si jagah hai chemistry ki baathi?",
+
+Physics lab
+hint: "Samne se nahi, par piche se hai raasta, Lens, prism, CRT aur pendulum ka basta. Experiments ki goonj, theory ka raaz, Batao kahan hai physics ka andaaz?",
+
+
+
+Mech parking : hqYUOqVZ
+hint: "Building ke paas, chhoti si jagah, Gaadiyon ka baithta yahan chhota basera. Suvidha ke raaste me milta yeh spot, Pedh ke saaye me hai konsa lot",
+
+
+CSE parking : qJwZa4NJ
+hint: "Auditorium ke paas, badi si jagah, Dhalan par padi, mitti ki raah. Na koi machine, bas khula sa ground, Batao wo jagah jahan gaadiyan paati thikaana found.",
+
+
+Seminar Hall : dr0IC8pL
+hint: "Na library, na canteen stall, Class aur guests ke saath mera hall. Mic aur stage, taaliyon ka jahan, Sabse upar milta, ek anokha hall.",
+
+
+Civil Workshop : VsuvZOXK
+hint: "Naap, tol aur design ka hota yahan kaam, Models aur drawings se sajta iska naam. Roz guzarte bacche mere paas se, College aate ya college se jaate raaste.",
+
+
+Tech hub : cY4dRNfl
+hint: "IT ke samne, screen aur ideas ka mela, Code aur circuits ka yahan hota khela. Seekhne, banane aur dikhane ka hub, Kaun si jagah hai tech lovers ka club?",

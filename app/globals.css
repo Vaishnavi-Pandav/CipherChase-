@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0e17;
+  --foreground: #c9e4ff;
+  --cyan: #00f0ff;
+  --cyan-dim: rgba(0, 240, 255, 0.3);
+  --green: #00ff41;
+  --green-dim: rgba(0, 255, 65, 0.3);
+  --red: #ff3333;
+  --red-dim: rgba(255, 51, 51, 0.3);
+  --yellow: #ffcc00;
+  --card-bg: rgba(10, 14, 23, 0.85);
+  --card-border: rgba(0, 240, 255, 0.4);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cyber-cyan: var(--cyan);
+  --color-cyber-green: var(--green);
+  --color-cyber-red: var(--red);
+  --color-cyber-yellow: var(--yellow);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Geist', Arial, Helvetica, sans-serif;
+}
+
+/* Cyberpunk scan-line overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 240, 255, 0.015) 2px,
+    rgba(0, 240, 255, 0.015) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0e17;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cyan);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00c8d6;
+}
+
+/* Glowing text animation */
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan-dim);
+  }
+  50% {
+    text-shadow: 0 0 20px var(--cyan), 0 0 40px var(--cyan-dim), 0 0 60px rgba(0, 240, 255, 0.2);
+  }
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    box-shadow: 0 0 8px var(--cyan-dim), inset 0 0 8px rgba(0, 240, 255, 0.05);
+  }
+  50% {
+    box-shadow: 0 0 16px var(--cyan-dim), inset 0 0 16px rgba(0, 240, 255, 0.1);
+  }
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--cyan); }
+}
+
+/* Glitch effect for headings */
+@keyframes glitch-1 {
+  0%, 100% { clip-path: inset(0 0 95% 0); transform: translate(0); }
+  20% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 1px); }
+  40% { clip-path: inset(50% 0 30% 0); transform: translate(2px, -1px); }
+  60% { clip-path: inset(70% 0 10% 0); transform: translate(-1px, 2px); }
+  80% { clip-path: inset(10% 0 80% 0); transform: translate(1px, -2px); }
+}
