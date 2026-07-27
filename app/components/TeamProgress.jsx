@@ -48,9 +48,16 @@ export default function TeamProgress() {
   };
 
   return (
-    <div className="p-4 sm:p-6 space-y-6 sm:space-y-8 bg-[rgba(10,14,23,0.85)] backdrop-blur-md rounded-2xl shadow-lg border border-cyan-500/60 w-full max-w-5xl mx-auto" style={{ boxShadow: "0 0 20px rgba(0,240,255,0.12)" }}>
-      <h2 className="text-lg sm:text-xl font-bold text-cyan-400 font-mono tracking-wide">
-        {"// "} Check Your Progress
+    <div
+      className="p-4 sm:p-6 space-y-6 sm:space-y-8 backdrop-blur-md rounded-2xl w-full max-w-5xl mx-auto"
+      style={{
+        background: "rgba(10,0,8,0.92)",
+        border: "1px solid rgba(139,0,0,0.5)",
+        boxShadow: "0 0 20px rgba(139,0,0,0.12)",
+      }}
+    >
+      <h2 className="text-lg sm:text-xl font-bold font-mono tracking-wide" style={{ color: "#cc0000" }}>
+        {"🔍 "} Suspect Trail — Track Your Progress
       </h2>
       <div className="flex flex-col sm:flex-row gap-3 w-full">
         <input
@@ -58,21 +65,32 @@ export default function TeamProgress() {
           placeholder="Enter Team ID"
           value={teamId}
           onChange={(e) => setTeamId(e.target.value)}
-          className="border-2 border-cyan-500/40 bg-black/80 text-white rounded-lg px-4 py-2 w-full sm:flex-1 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-cyan-400 font-mono placeholder:text-cyan-500/30"
+          className="rounded-lg px-4 py-2 w-full sm:flex-1 text-sm sm:text-base focus:outline-none font-mono"
+          style={{
+            background: "rgba(0,0,0,0.8)",
+            color: "#e8d5c4",
+            border: "2px solid rgba(139,0,0,0.4)",
+          }}
         />
         <button
           onClick={fetchTeamProgress}
           disabled={loading}
-          className="bg-cyan-600 text-black px-6 py-2 rounded-lg font-semibold hover:bg-cyan-500 transition-all shadow-[0_0_10px_rgba(0,240,255,0.6)] w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed font-mono"
+          className="px-6 py-2 rounded-lg font-semibold transition-all w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed font-mono"
+          style={{
+            background: "rgba(139,0,0,0.85)",
+            color: "#e8d5c4",
+            boxShadow: "0 0 12px rgba(139,0,0,0.5)",
+            border: "1px solid rgba(139,0,0,0.6)",
+          }}
         >
-          {loading ? <Loader2 className="animate-spin" size={20} /> : "Scan"}
+          {loading ? <Loader2 className="animate-spin" size={20} /> : "Investigate"}
         </button>
       </div>
 
       {/* Empty State */}
       {!loading && codes.length === 0 && teamId && (
-        <p className="text-gray-500 text-center italic font-mono">
-          {"// "} No progress found for this team.
+        <p className="text-center italic font-mono" style={{ color: "rgba(139,0,0,0.6)" }}>
+          {"// "} No evidence trail found for this suspect.
         </p>
       )}
 
@@ -80,14 +98,14 @@ export default function TeamProgress() {
       {codes.length > 0 && (
         <div className="flex flex-col items-center gap-4">
           <div className="relative w-full">
-            <div className="flex items-center justify-start sm:justify-center overflow-x-auto py-4 scrollbar-thin scrollbar-thumb-cyan-500 scrollbar-track-transparent">
+            <div className="flex items-center justify-start sm:justify-center overflow-x-auto py-4">
               {codes.map((code, index) => {
                 const nextScanned = codes[index + 1]?.scanned;
-                let lineColor = "bg-gray-700";
+                let lineColor = "bg-gray-800";
                 if (code.scanned && nextScanned) {
-                  lineColor = "bg-green-500 shadow-[0_0_10px_rgba(0,255,65,0.6)]";
+                  lineColor = "bg-red-800";
                 } else if (code.scanned || nextScanned) {
-                  lineColor = "bg-cyan-500 shadow-[0_0_10px_rgba(0,240,255,0.6)]";
+                  lineColor = "bg-red-900";
                 }
 
                 const isCurrent =
@@ -95,31 +113,37 @@ export default function TeamProgress() {
                   !codes.slice(0, index).some((c) => !c.scanned);
 
                 return (
-                  <div
-                    key={code.value}
-                    className="flex flex-col items-center flex-shrink-0"
-                  >
-                    {/* Icon + connecting line */}
+                  <div key={code.value} className="flex flex-col items-center flex-shrink-0">
                     <div className="flex items-center">
                       <BadgeCheck
                         size={iconSize}
                         title={
                           code.scanned
-                            ? `Scanned at ${formatTime(code.scannedAt)}`
-                            : "Not scanned yet"
+                            ? `Found at ${formatTime(code.scannedAt)}`
+                            : "Not found yet"
                         }
                         className={`transition-all ${
                           code.scanned
-                            ? "text-green-400 drop-shadow-[0_0_10px_rgba(0,255,65,0.8)]"
+                            ? "animate-pulse"
                             : isCurrent
-                            ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(0,240,255,0.8)] animate-pulse"
-                            : "text-gray-500"
+                            ? "animate-pulse"
+                            : ""
                         }`}
+                        style={{
+                          color: code.scanned
+                            ? "#cc0000"
+                            : isCurrent
+                            ? "rgba(201,168,76,0.9)"
+                            : "rgba(80,0,0,0.5)",
+                          filter: code.scanned
+                            ? "drop-shadow(0 0 8px rgba(139,0,0,0.8))"
+                            : isCurrent
+                            ? "drop-shadow(0 0 6px rgba(201,168,76,0.7))"
+                            : "none",
+                        }}
                       />
                       {index !== codes.length - 1 && (
-                        <div
-                          className={`w-8 sm:w-16 h-1 ${lineColor}`}
-                        ></div>
+                        <div className={`w-8 sm:w-16 h-1 ${lineColor}`}></div>
                       )}
                     </div>
                   </div>
@@ -127,8 +151,7 @@ export default function TeamProgress() {
               })}
             </div>
           </div>
-          {/* Scroll hint for mobile */}
-          <p className="sm:hidden text-gray-500 text-xs italic font-mono">
+          <p className="sm:hidden text-xs italic font-mono" style={{ color: "rgba(139,0,0,0.5)" }}>
             ← Swipe to see more →
           </p>
         </div>

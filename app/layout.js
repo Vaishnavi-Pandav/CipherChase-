@@ -15,19 +15,20 @@ export const metadata = {
   metadataBase: new URL("https://upsurge-cipherchase.vercel.app/"),
 
   title: {
-    default: "CipherChase – Cybersecurity Treasure Hunt",
+    default: "CipherChase – Upsurge 2K26 Crime Hunt",
     template: "%s | CipherChase",
   },
 
   description:
-    "CipherChase is a thrilling cybersecurity-themed QR treasure hunt. Crack the codes, solve puzzles, and race to the top of the leaderboard!",
+    "CipherChase is a crime-themed QR evidence trail at Upsurge 2K26. Hunt the clues, crack the case, and race to the top of the most-wanted leaderboard!",
 
   keywords: [
     "CipherChase",
-    "cybersecurity treasure hunt",
-    "QR hacking game",
-    "code breaking competition",
-    "cyber security event",
+    "Upsurge 2K26",
+    "crime treasure hunt",
+    "QR evidence hunt",
+    "mystery game",
+    "crime scene event",
     "treasure hunt",
   ],
 
@@ -39,9 +40,9 @@ export const metadata = {
   },
 
   openGraph: {
-    title: "CipherChase – Cybersecurity Treasure Hunt",
+    title: "CipherChase – Upsurge 2K26 Crime Hunt",
     description:
-      "Crack the code. Hack the system. Win the prize. Join CipherChase — a cybersecurity-themed QR treasure hunt!",
+      "Follow the evidence. Crack the case. Win the prize. Join CipherChase — a crime-themed QR evidence hunt at Upsurge 2K26!",
     url: "https://upsurge-cipherchase.vercel.app/",
     siteName: "CipherChase",
     images: [
@@ -58,9 +59,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "CipherChase – Cybersecurity Treasure Hunt",
+    title: "CipherChase – Upsurge 2K26 Crime Hunt",
     description:
-      "Scan. Hack. Win. Join CipherChase — a cybersecurity QR-based treasure hunt with puzzles and prizes!",
+      "Hunt. Decode. Survive. Join CipherChase — a crime-scene QR evidence hunt at Upsurge 2K26!",
     images: ["/CipherChase.jpg"],
   },
 };
@@ -68,7 +69,7 @@ export const metadata = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0a0e17",
+  themeColor: "#0a0008",
 };
 
 export default function RootLayout({ children }) {

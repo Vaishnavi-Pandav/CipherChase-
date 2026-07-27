@@ -5,27 +5,31 @@ import GithubIcon from "@/public/svg/GithubIcon";
 
 const Footer = () => {
   return (
-    <footer className="mt-8 text-center text-sm text-gray-400 font-mono">
+    <footer className="mt-8 text-center text-sm font-mono" style={{ color: "rgba(200,180,160,0.5)" }}>
       <p>
-        Developed with <span className="text-cyan-400">{"<"}3{"/>"}</span> by{" "}
+        Developed with{" "}
+        <span style={{ color: "#cc0000" }}>{"<"}3{"/>"}</span> by{" "}
         <a
           href="https://github.com/rishabhgokhe"
           target="_blank"
           rel="noopener noreferrer"
-          className="font-semibold text-cyan-400 hover:text-cyan-300 hover:underline transition-colors"
+          className="font-semibold transition-colors hover:underline"
+          style={{ color: "#cc0000" }}
         >
           Rishabh
         </a>
       </p>
 
-      {/* Social Links */}
-      <div className="flex justify-center gap-5 mt-3 text-lg">
-        <p>Follow me : </p>
+      <div className="flex justify-center gap-5 mt-3 text-lg items-center">
+        <p>Follow me :</p>
         <a
           href="https://github.com/rishabhgokhe"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-cyan-400 transition-colors"
+          className="transition-colors"
+          style={{ color: "rgba(200,180,160,0.5)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#cc0000")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(200,180,160,0.5)")}
         >
           <GithubIcon />
         </a>
@@ -33,7 +37,10 @@ const Footer = () => {
           href="https://www.linkedin.com/in/rishabh-gokhe"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-blue-400 transition-colors"
+          className="transition-colors"
+          style={{ color: "rgba(200,180,160,0.5)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#c9a84c")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(200,180,160,0.5)")}
         >
           <Linkedin01Icon />
         </a>
@@ -41,12 +48,18 @@ const Footer = () => {
           href="https://www.instagram.com/rishabh_gokhe/"
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:text-pink-400 transition-colors"
+          className="transition-colors"
+          style={{ color: "rgba(200,180,160,0.5)" }}
+          onMouseEnter={(e) => (e.currentTarget.style.color = "#cc0000")}
+          onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(200,180,160,0.5)")}
         >
           <InstagramIcon />
         </a>
       </div>
-      <p className="mt-3 text-xs text-cyan-500/30">© 2025 CipherChase — All rights reserved</p>
+
+      <p className="mt-3 text-xs" style={{ color: "rgba(139,0,0,0.35)" }}>
+        © 2026 CipherChase — All rights reserved
+      </p>
     </footer>
   );
 };

@@ -13,26 +13,30 @@ export default function Home() {
       <div
         className="relative min-h-screen font-sans text-white"
         style={{
-          background: "radial-gradient(ellipse at 20% 50%, rgba(0, 240, 255, 0.06) 0%, transparent 50%), radial-gradient(ellipse at 80% 20%, rgba(0, 255, 65, 0.04) 0%, transparent 50%), #0a0e17",
+          background:
+            "radial-gradient(ellipse at 20% 50%, rgba(139,0,0,0.08) 0%, transparent 55%), radial-gradient(ellipse at 80% 20%, rgba(80,0,0,0.06) 0%, transparent 55%), #0a0008",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundAttachment: "fixed",
         }}
       >
-        {/* Animated grid overlay */}
+        {/* Crime-scene evidence tape grid */}
         <div
-          className="absolute inset-0 opacity-20"
+          className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `
-              linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px)
+              linear-gradient(rgba(139,0,0,0.15) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(139,0,0,0.15) 1px, transparent 1px)
             `,
-            backgroundSize: "40px 40px",
+            backgroundSize: "50px 50px",
           }}
         ></div>
 
-        {/* Subtle top glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 blur-[120px] rounded-full pointer-events-none"></div>
+        {/* Bloodstain top glow */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] bg-red-900/20 blur-[140px] rounded-full pointer-events-none"></div>
+
+        {/* Bottom fog */}
+        <div className="absolute bottom-0 left-0 w-full h-[200px] bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
 
         <div className="relative z-10 p-8 pb-20 gap-16 sm:p-20 flex flex-col items-center">
           <Header />

@@ -4,8 +4,28 @@ import Image from "next/image";
 const Header = () => {
   return (
     <div className="w-full flex flex-col items-center justify-center mb-5 relative px-4">
+      {/* Crime scene tape banner */}
+      <div className="w-full max-w-2xl mb-4 overflow-hidden">
+        <div
+          className="text-center text-xs font-extrabold tracking-[0.3em] py-1 px-4 text-black"
+          style={{
+            background: "repeating-linear-gradient(45deg, #c9a84c, #c9a84c 12px, #0a0008 12px, #0a0008 24px)",
+          }}
+        >
+          ⚠ CRIME SCENE — DO NOT CROSS ⚠
+        </div>
+      </div>
+
       <div className="w-full flex items-center justify-center">
-        <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl border-2 border-cyan-500/60 p-2 shadow-[0_0_12px_rgba(0,240,255,0.7)] animate-pulse hover:scale-110 transition-transform">
+        {/* Upsurge logo */}
+        <div
+          className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl border-2 p-1.5 hover:scale-110 transition-transform"
+          style={{
+            borderColor: "rgba(139,0,0,0.7)",
+            boxShadow: "0 0 16px rgba(139,0,0,0.6), inset 0 0 8px rgba(139,0,0,0.15)",
+            animation: "border-blood 3s ease-in-out infinite",
+          }}
+        >
           <Image
             src="/img/upsurge-logo.png"
             alt="Upsurge Logo"
@@ -15,11 +35,44 @@ const Header = () => {
           />
         </div>
 
-        <h1 className="mx-4 text-3xl sm:text-5xl font-extrabold font-mono text-cyan-400 drop-shadow-[0_0_12px_rgba(0,240,255,0.8)] text-center tracking-wider">
-          {"<"}Cipher Chase{"/>"}
-        </h1>
+        {/* Title */}
+        <div className="mx-4 text-center">
+          <h1
+            className="text-3xl sm:text-5xl font-extrabold font-mono tracking-wider uppercase"
+            style={{
+              color: "#e8d5c4",
+              textShadow: "0 0 16px rgba(139,0,0,0.9), 0 0 32px rgba(139,0,0,0.4), 2px 2px 0px #000",
+              WebkitTextStroke: "1px rgba(139,0,0,0.5)",
+            }}
+          >
+            Cipher Chase
+          </h1>
+          {/* Blood drip under title */}
+          <div className="flex justify-center gap-3 mt-1">
+            {[...Array(5)].map((_, i) => (
+              <div
+                key={i}
+                className="rounded-b-full"
+                style={{
+                  width: `${4 + i % 3}px`,
+                  height: `${10 + (i * 4) % 14}px`,
+                  background: "linear-gradient(to bottom, #8b0000, #4a0000)",
+                  boxShadow: "0 0 4px rgba(139,0,0,0.6)",
+                  opacity: 0.8,
+                }}
+              />
+            ))}
+          </div>
+        </div>
 
-        <div className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl border-2 border-green-400/60 p-2 shadow-[0_0_12px_rgba(0,255,65,0.7)] animate-pulse hover:scale-110 transition-transform">
+        {/* Cosmos logo */}
+        <div
+          className="w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 rounded-xl border-2 p-1.5 hover:scale-110 transition-transform"
+          style={{
+            borderColor: "rgba(201,168,76,0.6)",
+            boxShadow: "0 0 16px rgba(201,168,76,0.4), inset 0 0 8px rgba(201,168,76,0.1)",
+          }}
+        >
           <Image
             src="/img/cosmos-logo.png"
             alt="Cosmos Logo"
@@ -30,11 +83,17 @@ const Header = () => {
         </div>
       </div>
 
-      <p className="mt-3 text-sm sm:text-lg md:text-xl font-semibold text-cyan-200/80 tracking-wider text-center">
-        ⌨ Scan • 🧩 Crack • 🏆 Claim
+      <p
+        className="mt-4 text-sm sm:text-lg font-semibold tracking-wider text-center font-mono"
+        style={{ color: "rgba(201,168,76,0.85)" }}
+      >
+        🔍 Hunt • 🧩 Decode • 💀 Survive
       </p>
-      <p className="mt-1 text-xs sm:text-sm font-mono text-green-400/60 tracking-widest">
-        [ cybersecurity_treasure_hunt.exe ]
+      <p
+        className="mt-1 text-xs sm:text-sm font-mono tracking-widest"
+        style={{ color: "rgba(139,0,0,0.7)" }}
+      >
+        [ UPSURGE_2K26 — EVIDENCE_TRAIL.exe ]
       </p>
     </div>
   );

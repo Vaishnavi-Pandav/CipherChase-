@@ -4,7 +4,7 @@ import { Pause, Play } from "lucide-react";
 
 const QRCodeScanner = () => {
   const [pause, setPause] = useState(false);
-  const [message, setMessage] = useState("📷 Scan a QR Code");
+  const [message, setMessage] = useState("🔍 Scan Evidence QR Code");
   const [teamId, setTeamId] = useState("");
   const [questionData, setQuestionData] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -26,7 +26,6 @@ const QRCodeScanner = () => {
     return null;
   };
 
-  // Penalty countdown
   useEffect(() => {
     if (!penaltyUntil) {
       clearInterval(timerRef.current);
@@ -64,7 +63,7 @@ const QRCodeScanner = () => {
       const qrValue = params.get("qrValue");
 
       if (!qrId || !qrValue) {
-        showMessage("❌ Invalid QR format");
+        showMessage("❌ Invalid evidence QR format");
         return;
       }
 
@@ -87,7 +86,7 @@ const QRCodeScanner = () => {
             setShowHint("");
             if (data.hint && !data.question) {
               setQuestionData(null);
-              showMessage(`💡 Hint: ${data.hint}`);
+              showMessage(`🔍 Clue: ${data.hint}`);
             } else {
               setQuestionData(data.question);
               setCurrentQR({ qrId, qrValue });
@@ -100,7 +99,7 @@ const QRCodeScanner = () => {
         })
         .catch(() => showMessage("⚠️ Something went wrong"));
     } catch {
-      showMessage("❌ Invalid QR format");
+      showMessage("❌ Invalid evidence QR format");
     }
   };
 
@@ -134,51 +133,80 @@ const QRCodeScanner = () => {
   };
 
   return (
-    <div className="w-full max-w-lg mx-auto p-6 bg-[rgba(10,14,23,0.85)] backdrop-blur-md rounded-2xl shadow-lg border border-cyan-500/60" style={{ boxShadow: "0 0 20px rgba(0,240,255,0.15), inset 0 0 20px rgba(0,240,255,0.03)" }}>
-      {/* Terminal-style header */}
-      <div className="flex items-center gap-2 mb-4 px-3 py-2 bg-black/40 rounded-lg border border-cyan-500/20">
-        <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-        <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-        <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
-        <span className="ml-3 text-xs font-mono text-cyan-400/60">cipher_scanner — v2.0</span>
+    <div
+      className="w-full max-w-lg mx-auto p-6 backdrop-blur-md rounded-2xl"
+      style={{
+        background: "rgba(10,0,8,0.92)",
+        border: "1px solid rgba(139,0,0,0.5)",
+        boxShadow: "0 0 24px rgba(139,0,0,0.2), inset 0 0 20px rgba(139,0,0,0.04)",
+      }}
+    >
+      {/* Evidence bag style header */}
+      <div
+        className="flex items-center gap-2 mb-4 px-3 py-2 rounded-lg"
+        style={{
+          background: "rgba(0,0,0,0.5)",
+          border: "1px solid rgba(139,0,0,0.3)",
+        }}
+      >
+        <div className="w-3 h-3 rounded-full bg-red-800"></div>
+        <div className="w-3 h-3 rounded-full bg-yellow-700/80"></div>
+        <div className="w-3 h-3 rounded-full bg-red-600/60"></div>
+        <span className="ml-3 text-xs font-mono" style={{ color: "rgba(139,0,0,0.8)" }}>
+          EVIDENCE_SCANNER — UPSURGE_2K26
+        </span>
       </div>
 
-      {/* Play Pause Button */}
+      {/* Play/Pause */}
       <div className="flex justify-between items-center mb-4">
         <button
           onClick={() => setPause(!pause)}
-          className={`flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all shadow-md font-mono text-sm
-      ${
-        pause
-          ? "bg-cyan-600 hover:bg-cyan-500 text-black"
-          : "bg-red-600 hover:bg-red-500 text-white"
-      }`}
+          className="flex items-center gap-2 px-4 py-2 rounded-lg font-semibold transition-all font-mono text-sm"
+          style={
+            pause
+              ? {
+                  background: "rgba(139,0,0,0.8)",
+                  color: "#e8d5c4",
+                  boxShadow: "0 0 12px rgba(139,0,0,0.5)",
+                  border: "1px solid rgba(139,0,0,0.6)",
+                }
+              : {
+                  background: "rgba(50,0,0,0.7)",
+                  color: "#cc0000",
+                  border: "1px solid rgba(139,0,0,0.4)",
+                }
+          }
         >
           {pause ? (
-            <>
-              <Play size={18} />
-              Resume
-            </>
+            <><Play size={18} /> Resume Investigation</>
           ) : (
-            <>
-              <Pause size={18} />
-              Pause
-            </>
+            <><Pause size={18} /> Pause</>
           )}
         </button>
-        <span className="text-xs font-mono text-cyan-500/50">STATUS: {pause ? "IDLE" : "ACTIVE"}</span>
+        <span className="text-xs font-mono" style={{ color: "rgba(139,0,0,0.6)" }}>
+          STATUS: {pause ? "IDLE" : "SCANNING"}
+        </span>
       </div>
 
       {/* Penalty Timer */}
       {penaltyRemaining && (
-        <div className="mb-4 text-center text-red-400 font-bold font-mono animate-pulse">
+        <div
+          className="mb-4 text-center font-bold font-mono animate-pulse"
+          style={{ color: "#cc0000" }}
+        >
           {penaltyRemaining}
         </div>
       )}
 
       {/* Scanner */}
       {!questionData && !penaltyUntil && (
-        <div className="overflow-hidden rounded-xl border-2 border-cyan-500 shadow-[0_0_20px_rgba(0,240,255,0.4)]">
+        <div
+          className="overflow-hidden rounded-xl"
+          style={{
+            border: "2px solid rgba(139,0,0,0.7)",
+            boxShadow: "0 0 24px rgba(139,0,0,0.4)",
+          }}
+        >
           <Scanner
             formats={["qr_code"]}
             paused={pause}
@@ -197,39 +225,74 @@ const QRCodeScanner = () => {
 
       {/* Question */}
       {questionData && (
-        <div className="mt-4 p-5 bg-black/80 rounded-xl border border-cyan-500/40 shadow-[0_0_15px_rgba(0,240,255,0.1)]">
-          <p className="text-lg font-bold text-cyan-300 font-mono">{"> "} {questionData.text}</p>
+        <div
+          className="mt-4 p-5 rounded-xl"
+          style={{
+            background: "rgba(0,0,0,0.85)",
+            border: "1px solid rgba(139,0,0,0.4)",
+            boxShadow: "0 0 16px rgba(139,0,0,0.1)",
+          }}
+        >
+          <p className="text-lg font-bold font-mono" style={{ color: "#e8d5c4" }}>
+            {"📋 "} {questionData.text}
+          </p>
           <div className="mt-3 grid grid-cols-1 gap-2">
             {questionData.options.map((opt, idx) => (
               <button
                 key={idx}
                 onClick={() => setSelectedAnswer(opt)}
-                className={`px-4 py-2 rounded-lg border text-left transition-all font-mono text-sm
-                  ${
-                    selectedAnswer === opt
-                      ? "bg-cyan-600/30 text-cyan-100 border-cyan-400 shadow-[0_0_8px_rgba(0,240,255,0.3)]"
-                      : "bg-gray-900/60 text-gray-200 border-cyan-500/20 hover:bg-cyan-900/20 hover:border-cyan-500/40"
-                  }`}
+                className="px-4 py-2 rounded-lg text-left transition-all font-mono text-sm"
+                style={
+                  selectedAnswer === opt
+                    ? {
+                        background: "rgba(139,0,0,0.25)",
+                        color: "#e8d5c4",
+                        border: "1px solid rgba(139,0,0,0.7)",
+                        boxShadow: "0 0 8px rgba(139,0,0,0.3)",
+                      }
+                    : {
+                        background: "rgba(20,0,0,0.6)",
+                        color: "#b0a090",
+                        border: "1px solid rgba(139,0,0,0.2)",
+                      }
+                }
               >
-                <span className="text-cyan-500 mr-2">[{String.fromCharCode(65 + idx)}]</span>
+                <span style={{ color: "#8b0000" }} className="mr-2">
+                  [{String.fromCharCode(65 + idx)}]
+                </span>
                 {opt}
               </button>
             ))}
           </div>
           {showHint && (
-            <p className="mt-3 text-sm text-yellow-400 font-mono">💡 Hint: {showHint}</p>
+            <p className="mt-3 text-sm font-mono" style={{ color: "#c9a84c" }}>
+              🔍 Clue: {showHint}
+            </p>
           )}
           <button
             onClick={handleSubmitAnswer}
-            className="mt-4 w-full px-4 py-2 bg-cyan-600 hover:bg-cyan-500 rounded-lg text-black font-bold transition-all font-mono shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+            className="mt-4 w-full px-4 py-2 rounded-lg font-bold transition-all font-mono"
+            style={{
+              background: "rgba(139,0,0,0.85)",
+              color: "#e8d5c4",
+              border: "1px solid rgba(139,0,0,0.6)",
+              boxShadow: "0 0 16px rgba(139,0,0,0.35)",
+            }}
           >
-            {">"} SUBMIT ANSWER
+            ⚖ SUBMIT TESTIMONY
           </button>
         </div>
       )}
 
       {/* Status Message */}
-      <div className="mt-4 text-center text-lg font-bold text-cyan-400 bg-black/70 rounded-md px-4 py-2 border border-cyan-500/50 font-mono">
+      <div
+        className="mt-4 text-center text-lg font-bold font-mono rounded-md px-4 py-2"
+        style={{
+          color: "#e8d5c4",
+          background: "rgba(0,0,0,0.7)",
+          border: "1px solid rgba(139,0,0,0.4)",
+        }}
+      >
         {message}
       </div>
     </div>
