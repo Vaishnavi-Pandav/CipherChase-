@@ -25,7 +25,7 @@ const Header = () => {
           }}
         >
           <Image
-            src="/img/upsurge-logo.png"
+            src="/img/upsurge-logo.jpeg"
             alt="Upsurge Logo"
             width={112}
             height={112}
