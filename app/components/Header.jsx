@@ -19,17 +19,18 @@ const Header = () => {
       <div className="w-full flex items-center justify-center">
         {/* Upsurge logo */}
         <div
-          className="w-20 h-20 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden hover:scale-110 transition-transform"
+          className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 hover:scale-110 transition-transform"
           style={{
             boxShadow: "0 0 20px rgba(139,0,0,0.7)",
+            borderRadius: "12px",
           }}
         >
           <Image
             src="/img/upsurge-logo.jpeg"
             alt="Upsurge Logo"
-            width={112}
-            height={112}
-            className="w-full h-full object-cover"
+            width={128}
+            height={128}
+            className="w-full h-full object-contain rounded-xl"
           />
         </div>
 
@@ -65,17 +66,18 @@ const Header = () => {
 
         {/* Cosmos logo */}
         <div
-          className="w-20 h-20 sm:w-28 sm:h-28 flex-shrink-0 rounded-xl overflow-hidden hover:scale-110 transition-transform"
+          className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 hover:scale-110 transition-transform"
           style={{
             boxShadow: "0 0 16px rgba(201,168,76,0.5)",
+            borderRadius: "12px",
           }}
         >
           <Image
             src="/img/cosmos-logo.png"
             alt="Cosmos Logo"
-            width={112}
-            height={112}
-            className="w-full h-full object-cover"
+            width={128}
+            height={128}
+            className="w-full h-full object-contain rounded-xl"
           />
         </div>
       </div>
