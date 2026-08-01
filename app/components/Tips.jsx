@@ -28,6 +28,7 @@ export default function Tips() {
             ["Wrong QR scan", "2 min penalty"],
             ["Wrong answer", "1 min penalty"],
             ["Wrong sequence", "2 min penalty"],
+            ["Tab switch / minimize", "10 min penalty"],
           ].map(([label, penalty]) => (
             <div key={label} className="flex justify-between items-center text-sm font-mono py-1"
               style={{ borderBottom:"1px solid rgba(139,0,0,0.1)", color:"rgba(220,160,160,0.85)" }}>

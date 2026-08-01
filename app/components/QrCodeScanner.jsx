@@ -18,8 +18,40 @@ const QRCodeScanner = () => {
   const [showHint, setShowHint] = useState("");
   const timerRef = useRef(null);
   const inputRef = useRef(null);
+  const teamIdRef = useRef("");
 
   const showMessage = (msg) => setMessage(msg);
+
+  // Keep ref in sync so visibility handler always has latest teamId
+  useEffect(() => { teamIdRef.current = teamId; }, [teamId]);
+
+  // Tab switch / window blur → 10 min penalty
+  useEffect(() => {
+    const TAB_PENALTY_MINUTES = 10;
+
+    const applyTabPenalty = () => {
+      const currentTeamId = teamIdRef.current;
+      if (!currentTeamId) return; // game not started yet
+      const until = new Date(Date.now() + TAB_PENALTY_MINUTES * 60 * 1000);
+      setPenaltyUntil(until.toISOString());
+      showMessage(`🚨 Tab switch detected! ${TAB_PENALTY_MINUTES} min penalty applied.`);
+      setQuestionData(null);
+
+      // Persist penalty to DB
+      fetch("/api/tab-penalty", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ teamId: currentTeamId, penaltyUntil: until.toISOString() }),
+      }).catch(() => {});
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "hidden") applyTabPenalty();
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
+  }, []);
 
   useEffect(() => {
     if (showTeamInput && inputRef.current) {
