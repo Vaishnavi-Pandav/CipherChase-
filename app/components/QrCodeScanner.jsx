@@ -131,6 +131,7 @@ const QRCodeScanner = () => {
       }
       // Don't show the raw URL — show a neutral message
       showMessage("✅ QR detected!");
+      setShowHint("");
       if (!teamId) {
         setPendingQR({ qrId, qrValue });
         setShowTeamInput(true);
@@ -292,8 +293,41 @@ const QRCodeScanner = () => {
             </div>
           )}
 
-          {/* ── PAUSE / RESUME (hidden while team input shown) ── */}
-          {!questionData && !showTeamInput && (
+          {/* ── HINT PANEL (shown after correct answer) ── */}
+          {showHint && !questionData && (
+            <div
+              className="rounded-xl p-4 mb-3"
+              style={{
+                background: "rgba(40,28,0,0.6)",
+                border: "1px solid rgba(201,168,76,0.5)",
+                boxShadow: "0 0 16px rgba(201,168,76,0.15)",
+              }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-base">🔍</span>
+                <span className="text-xs font-extrabold font-mono tracking-widest uppercase" style={{ color: "#c9a84c" }}>
+                  Next Clue
+                </span>
+              </div>
+              <p className="text-sm font-mono leading-relaxed" style={{ color: "rgba(201,168,76,0.9)" }}>
+                {showHint}
+              </p>
+              <button
+                onClick={() => setShowHint("")}
+                className="mt-3 w-full py-2 rounded-lg font-mono text-xs tracking-widest uppercase"
+                style={{
+                  background: "rgba(201,168,76,0.15)",
+                  color: "rgba(201,168,76,0.6)",
+                  border: "1px solid rgba(201,168,76,0.25)",
+                }}
+              >
+                Got it — Scan Next QR
+              </button>
+            </div>
+          )}
+
+          {/* ── PAUSE / RESUME (hidden while team input or hint shown) ── */}
+          {!questionData && !showTeamInput && !showHint && (
             <div className="flex items-center justify-between mb-3">
               <button
                 onClick={() => setPause(!pause)}
@@ -330,7 +364,7 @@ const QRCodeScanner = () => {
           )}
 
           {/* ── SCANNER ── */}
-          {!questionData && !penaltyUntil && !showTeamInput && (
+          {!questionData && !penaltyUntil && !showTeamInput && !showHint && (
             <div
               className="overflow-hidden rounded-xl relative"
               style={{
@@ -382,7 +416,7 @@ const QRCodeScanner = () => {
                   </button>
                 ))}
               </div>
-              {showHint && (
+              {showHint && !questionData && (
                 <p className="mt-3 text-xs font-mono px-3 py-2 rounded-lg" style={{ color: "#c9a84c", background: "rgba(40,28,0,0.5)", border: "1px solid rgba(201,168,76,0.2)" }}>
                   🔍 {showHint}
                 </p>
