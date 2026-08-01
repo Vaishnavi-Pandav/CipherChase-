@@ -5,6 +5,7 @@ import { Medal, Trophy, Award, Circle, RefreshCw } from "lucide-react";
 export default function Leaderboard() {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [countdown, setCountdown] = useState(30);
 
   const fetchLeaderboard = async () => {
     setLoading(true);
@@ -13,10 +14,23 @@ export default function Leaderboard() {
       const data = await res.json();
       if (data.success) setLeaderboard(data.leaderboard);
     } catch (e) { console.error(e); }
-    finally { setLoading(false); }
+    finally { setLoading(false); setCountdown(30); }
   };
 
-  useEffect(() => { fetchLeaderboard(); }, []);
+  // Auto-refresh every 30 seconds
+  useEffect(() => {
+    fetchLeaderboard();
+    const interval = setInterval(fetchLeaderboard, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Countdown timer
+  useEffect(() => {
+    const tick = setInterval(() => {
+      setCountdown((c) => (c <= 1 ? 30 : c - 1));
+    }, 1000);
+    return () => clearInterval(tick);
+  }, []);
 
   const getRankIcon = (rank) => {
     if (rank === 1) return <Trophy style={{ color:"#c9a84c", filter:"drop-shadow(0 0 6px gold)" }} size={20} />;
@@ -37,11 +51,16 @@ export default function Leaderboard() {
         <h2 className="text-lg sm:text-xl font-extrabold font-mono tracking-wide" style={{ color:"#cc0000" }}>
           🏴 Most Wanted
         </h2>
-        <button onClick={fetchLeaderboard} disabled={loading}
-          className="p-1.5 rounded-lg transition-all disabled:opacity-40"
-          style={{ background:"rgba(139,0,0,0.15)", border:"1px solid rgba(139,0,0,0.3)" }}>
-          <RefreshCw size={14} style={{ color:"#cc0000" }} className={loading ? "animate-spin" : ""} />
-        </button>
+        <div className="flex items-center gap-2">
+          <span className="text-xs font-mono" style={{ color:"rgba(139,0,0,0.5)" }}>
+            {countdown}s
+          </span>
+          <button onClick={fetchLeaderboard} disabled={loading}
+            className="p-1.5 rounded-lg transition-all disabled:opacity-40"
+            style={{ background:"rgba(139,0,0,0.15)", border:"1px solid rgba(139,0,0,0.3)" }}>
+            <RefreshCw size={14} style={{ color:"#cc0000" }} className={loading ? "animate-spin" : ""} />
+          </button>
+        </div>
       </div>
 
       <div className="overflow-x-auto">
