@@ -23,11 +23,10 @@ const Header = () => {
 
         {/* Title */}
         <div className="text-center flex-1 min-w-0">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-mono tracking-wider uppercase leading-tight"
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-mono tracking-wider uppercase leading-tight blood-text"
             style={{
-              color: "#e8d5c4",
-              textShadow: "0 0 20px rgba(139,0,0,0.9), 0 0 40px rgba(139,0,0,0.4), 2px 2px 0 #000",
-              WebkitTextStroke: "1px rgba(139,0,0,0.4)",
+              color: "#f5e6d3",
+              WebkitTextStroke: "1px rgba(139,0,0,0.35)",
             }}>
             Cipher Chase
           </h1>
@@ -35,10 +34,10 @@ const Header = () => {
           <div className="flex justify-center gap-2 mt-1">
             {[8,12,6,14,10].map((h, i) => (
               <div key={i} className="rounded-b-full w-1"
-                style={{ height: `${h}px`, background: "linear-gradient(to bottom,#8b0000,#3a0000)", opacity: 0.85 }} />
+                style={{ height: `${h}px`, background: "linear-gradient(to bottom,#8b0000,#3a0000)", opacity: 0.9 }} />
             ))}
           </div>
-          <p className="mt-2 text-xs sm:text-sm font-mono tracking-widest" style={{ color: "rgba(201,168,76,0.8)" }}>
+          <p className="mt-2 text-xs sm:text-sm font-mono tracking-widest font-semibold" style={{ color: "rgba(212,168,83,0.9)" }}>
             🔍 Hunt &nbsp;•&nbsp; 🧩 Decode &nbsp;•&nbsp; 💀 Survive
           </p>
         </div>
