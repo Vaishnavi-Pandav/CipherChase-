@@ -8,7 +8,7 @@ const QRCodeScanner = () => {
   const [message, setMessage] = useState("🔍 Scan Evidence QR Code");
   const [teamId, setTeamId] = useState("");
   const [teamIdInput, setTeamIdInput] = useState("");
-  const [showModal, setShowModal] = useState(false);
+  const [showTeamInput, setShowTeamInput] = useState(false);
   const [pendingQR, setPendingQR] = useState(null);
   const [questionData, setQuestionData] = useState(null);
   const [selectedAnswer, setSelectedAnswer] = useState("");
@@ -21,12 +21,11 @@ const QRCodeScanner = () => {
 
   const showMessage = (msg) => setMessage(msg);
 
-  // Focus input when modal opens
   useEffect(() => {
-    if (showModal && inputRef.current) {
-      setTimeout(() => inputRef.current?.focus(), 100);
+    if (showTeamInput && inputRef.current) {
+      setTimeout(() => inputRef.current?.focus(), 150);
     }
-  }, [showModal]);
+  }, [showTeamInput]);
 
   // Penalty countdown
   useEffect(() => {
@@ -52,6 +51,7 @@ const QRCodeScanner = () => {
   }, [penaltyUntil]);
 
   const callValidate = (tid, qrId, qrValue) => {
+    showMessage("⏳ Validating...");
     fetch("/api/validate", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -87,19 +87,21 @@ const QRCodeScanner = () => {
       showMessage("⚠ Under penalty. Wait until it expires.");
       return;
     }
-    const url = codes[0]?.rawValue;
-    if (!url) return;
+    const raw = codes[0]?.rawValue;
+    if (!raw) return;
     try {
-      const params = new URLSearchParams(new URL(url).search);
+      const params = new URLSearchParams(new URL(raw).search);
       const qrId = params.get("qrId");
       const qrValue = params.get("qrValue");
       if (!qrId || !qrValue) {
         showMessage("❌ Invalid QR format");
         return;
       }
+      // Don't show the raw URL — show a neutral message
+      showMessage("✅ QR detected!");
       if (!teamId) {
         setPendingQR({ qrId, qrValue });
-        setShowModal(true);
+        setShowTeamInput(true);
         setPause(true);
         return;
       }
@@ -109,11 +111,11 @@ const QRCodeScanner = () => {
     }
   };
 
-  const handleModalSubmit = () => {
+  const handleTeamIdSubmit = () => {
     const id = teamIdInput.trim();
     if (!id) return;
     setTeamId(id);
-    setShowModal(false);
+    setShowTeamInput(false);
     setPause(false);
     setTeamIdInput("");
     if (pendingQR) {
@@ -151,84 +153,9 @@ const QRCodeScanner = () => {
   };
 
   return (
-    <>
-      {/* Team ID Modal */}
-      {showModal && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center px-4"
-          style={{ background: "rgba(0,0,0,0.85)", backdropFilter: "blur(6px)" }}
-        >
-          <div
-            className="w-full max-w-sm rounded-2xl p-6"
-            style={{
-              background: "linear-gradient(135deg, #0f0005 0%, #1a0008 100%)",
-              border: "1px solid rgba(139,0,0,0.7)",
-              boxShadow: "0 0 40px rgba(139,0,0,0.4), inset 0 0 20px rgba(139,0,0,0.05)",
-            }}
-          >
-            {/* Top accent line */}
-            <div
-              className="h-1 w-16 rounded-full mx-auto mb-5"
-              style={{ background: "linear-gradient(90deg, #8b0000, #cc0000, #8b0000)" }}
-            />
-
-            <div className="text-center mb-5">
-              <div className="text-3xl mb-2">🪪</div>
-              <h2
-                className="text-xl font-extrabold font-mono tracking-wider uppercase"
-                style={{ color: "#e8d5c4", textShadow: "0 0 12px rgba(139,0,0,0.8)" }}
-              >
-                Identify Yourself
-              </h2>
-              <p className="text-xs mt-1 font-mono" style={{ color: "rgba(200,160,160,0.6)" }}>
-                Enter your Agent ID to proceed
-              </p>
-            </div>
-
-            <input
-              ref={inputRef}
-              type="text"
-              placeholder="e.g. T1X9A2"
-              value={teamIdInput}
-              onChange={(e) => setTeamIdInput(e.target.value.toUpperCase())}
-              onKeyDown={(e) => e.key === "Enter" && handleModalSubmit()}
-              className="w-full px-4 py-3 rounded-xl text-center text-lg font-mono font-bold tracking-widest focus:outline-none mb-4"
-              style={{
-                background: "rgba(0,0,0,0.7)",
-                color: "#e8d5c4",
-                border: "1px solid rgba(139,0,0,0.5)",
-                letterSpacing: "0.2em",
-              }}
-            />
-
-            <button
-              onClick={handleModalSubmit}
-              disabled={!teamIdInput.trim()}
-              className="w-full py-3 rounded-xl font-extrabold font-mono text-base tracking-widest uppercase transition-all disabled:opacity-40"
-              style={{
-                background: "linear-gradient(135deg, #8b0000, #cc0000)",
-                color: "#fff",
-                boxShadow: "0 0 20px rgba(139,0,0,0.5)",
-                border: "1px solid rgba(200,0,0,0.4)",
-              }}
-            >
-              ⚡ CONFIRM
-            </button>
-
-            <button
-              onClick={() => { setShowModal(false); setPause(false); setPendingQR(null); }}
-              className="w-full mt-2 py-2 text-xs font-mono"
-              style={{ color: "rgba(139,0,0,0.5)" }}
-            >
-              Cancel
-            </button>
-          </div>
-        </div>
-      )}
-
-      {/* Main Scanner Card */}
+    <div className="w-full px-3 sm:px-0 sm:max-w-sm mx-auto">
       <div
-        className="w-full max-w-sm mx-auto rounded-2xl overflow-hidden"
+        className="w-full rounded-2xl overflow-hidden"
         style={{
           background: "linear-gradient(160deg, #0f0005 0%, #160008 100%)",
           border: "1px solid rgba(139,0,0,0.5)",
@@ -237,61 +164,122 @@ const QRCodeScanner = () => {
       >
         {/* Header bar */}
         <div
-          className="flex items-center justify-between px-4 py-3"
+          className="flex items-center justify-between px-3 py-2.5"
           style={{
             background: "rgba(0,0,0,0.5)",
             borderBottom: "1px solid rgba(139,0,0,0.2)",
           }}
         >
-          <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-800"></div>
-            <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(180,120,0,0.7)" }}></div>
-            <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(139,0,0,0.5)" }}></div>
+          <div className="flex items-center gap-1.5">
+            <div className="w-2.5 h-2.5 rounded-full bg-red-800" />
+            <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(180,120,0,0.7)" }} />
+            <div className="w-2.5 h-2.5 rounded-full" style={{ background: "rgba(139,0,0,0.5)" }} />
           </div>
           <span className="text-xs font-mono" style={{ color: "rgba(139,0,0,0.7)" }}>
             EVIDENCE SCANNER
           </span>
-          {teamId && (
+          {teamId ? (
             <button
-              onClick={() => { setTeamId(""); setQuestionData(null); setShowHint(""); }}
-              className="text-xs font-mono px-2 py-0.5 rounded"
+              onClick={() => { setTeamId(""); setQuestionData(null); setShowHint(""); showMessage("🔍 Scan Evidence QR Code"); }}
+              className="text-xs font-mono px-2 py-0.5 rounded truncate max-w-[80px]"
               style={{ color: "rgba(201,168,76,0.8)", border: "1px solid rgba(201,168,76,0.2)" }}
             >
               {teamId} ✕
             </button>
+          ) : (
+            <div className="w-16" />
           )}
-          {!teamId && <div className="w-16" />}
         </div>
 
-        <div className="p-4">
-          {/* Pause/Resume button */}
-          {!questionData && (
+        <div className="p-3">
+
+          {/* ── INLINE TEAM ID INPUT (shown after scan when no teamId) ── */}
+          {showTeamInput && (
+            <div
+              className="rounded-xl p-4 mb-3"
+              style={{
+                background: "rgba(0,0,0,0.75)",
+                border: "1px solid rgba(139,0,0,0.6)",
+                boxShadow: "0 0 20px rgba(139,0,0,0.2)",
+              }}
+            >
+              <div className="text-center mb-3">
+                <span className="text-2xl">🪪</span>
+                <p
+                  className="text-sm font-extrabold font-mono tracking-widest uppercase mt-1"
+                  style={{ color: "#e8d5c4", textShadow: "0 0 8px rgba(139,0,0,0.7)" }}
+                >
+                  Enter Agent ID
+                </p>
+                <p className="text-xs font-mono mt-0.5" style={{ color: "rgba(180,140,140,0.6)" }}>
+                  QR detected — identify yourself first
+                </p>
+              </div>
+
+              {/* Red accent line */}
+              <div
+                className="h-px w-full mb-3"
+                style={{ background: "linear-gradient(90deg, transparent, rgba(139,0,0,0.6), transparent)" }}
+              />
+
+              <input
+                ref={inputRef}
+                type="text"
+                placeholder="e.g. T1X9A2"
+                value={teamIdInput}
+                onChange={(e) => setTeamIdInput(e.target.value.toUpperCase())}
+                onKeyDown={(e) => e.key === "Enter" && handleTeamIdSubmit()}
+                className="w-full px-4 py-3 rounded-xl text-center text-base font-mono font-bold tracking-[0.2em] focus:outline-none mb-3"
+                style={{
+                  background: "rgba(10,0,5,0.9)",
+                  color: "#e8d5c4",
+                  border: "1px solid rgba(139,0,0,0.5)",
+                }}
+              />
+
+              <button
+                onClick={handleTeamIdSubmit}
+                disabled={!teamIdInput.trim()}
+                className="w-full py-3 rounded-xl font-extrabold font-mono text-sm tracking-widest uppercase transition-all disabled:opacity-40"
+                style={{
+                  background: "linear-gradient(135deg, #8b0000, #cc0000)",
+                  color: "#fff",
+                  boxShadow: "0 0 16px rgba(139,0,0,0.4)",
+                }}
+              >
+                ⚡ CONFIRM & PROCEED
+              </button>
+
+              <button
+                onClick={() => { setShowTeamInput(false); setPause(false); setPendingQR(null); showMessage("🔍 Scan Evidence QR Code"); }}
+                className="w-full mt-2 py-1.5 text-xs font-mono"
+                style={{ color: "rgba(139,0,0,0.5)" }}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
+
+          {/* ── PAUSE / RESUME (hidden while team input shown) ── */}
+          {!questionData && !showTeamInput && (
             <div className="flex items-center justify-between mb-3">
               <button
                 onClick={() => setPause(!pause)}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl font-bold font-mono text-sm transition-all"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl font-bold font-mono text-sm transition-all"
                 style={
                   pause
-                    ? {
-                        background: "linear-gradient(135deg, #8b0000, #cc0000)",
-                        color: "#fff",
-                        boxShadow: "0 0 14px rgba(139,0,0,0.5)",
-                      }
-                    : {
-                        background: "rgba(30,0,0,0.8)",
-                        color: "#cc0000",
-                        border: "1px solid rgba(139,0,0,0.4)",
-                      }
+                    ? { background: "linear-gradient(135deg,#8b0000,#cc0000)", color: "#fff", boxShadow: "0 0 12px rgba(139,0,0,0.5)" }
+                    : { background: "rgba(30,0,0,0.8)", color: "#cc0000", border: "1px solid rgba(139,0,0,0.4)" }
                 }
               >
-                {pause ? <><Play size={15} /> Resume</> : <><Pause size={15} /> Pause</>}
+                {pause ? <><Play size={14} /> Resume</> : <><Pause size={14} /> Pause</>}
               </button>
               <span
                 className="text-xs font-mono px-2 py-1 rounded-full"
                 style={{
-                  background: pause ? "rgba(50,0,0,0.5)" : "rgba(0,80,0,0.3)",
-                  color: pause ? "rgba(139,0,0,0.8)" : "rgba(0,200,0,0.8)",
-                  border: `1px solid ${pause ? "rgba(139,0,0,0.3)" : "rgba(0,150,0,0.3)"}`,
+                  background: pause ? "rgba(50,0,0,0.5)" : "rgba(0,60,0,0.4)",
+                  color: pause ? "rgba(180,0,0,0.9)" : "rgba(0,200,0,0.9)",
+                  border: `1px solid ${pause ? "rgba(139,0,0,0.3)" : "rgba(0,120,0,0.4)"}`,
                 }}
               >
                 {pause ? "● IDLE" : "● LIVE"}
@@ -299,35 +287,30 @@ const QRCodeScanner = () => {
             </div>
           )}
 
-          {/* Penalty Timer */}
+          {/* ── PENALTY TIMER ── */}
           {penaltyRemaining && (
             <div
-              className="mb-3 text-center font-bold font-mono text-sm py-2 rounded-xl animate-pulse"
-              style={{
-                color: "#cc0000",
-                background: "rgba(139,0,0,0.1)",
-                border: "1px solid rgba(139,0,0,0.3)",
-              }}
+              className="mb-3 text-center font-bold font-mono text-xs py-2 rounded-xl animate-pulse"
+              style={{ color: "#cc0000", background: "rgba(139,0,0,0.1)", border: "1px solid rgba(139,0,0,0.3)" }}
             >
               {penaltyRemaining}
             </div>
           )}
 
-          {/* Scanner viewport */}
-          {!questionData && !penaltyUntil && (
+          {/* ── SCANNER ── */}
+          {!questionData && !penaltyUntil && !showTeamInput && (
             <div
               className="overflow-hidden rounded-xl relative"
               style={{
-                border: "2px solid rgba(139,0,0,0.7)",
-                boxShadow: "0 0 24px rgba(139,0,0,0.35), inset 0 0 10px rgba(139,0,0,0.05)",
+                border: "2px solid rgba(139,0,0,0.6)",
+                boxShadow: "0 0 20px rgba(139,0,0,0.3)",
               }}
             >
-              {/* Corner accents */}
-              <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 rounded-tl-lg z-10" style={{ borderColor: "#cc0000" }} />
-              <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 rounded-tr-lg z-10" style={{ borderColor: "#cc0000" }} />
-              <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 rounded-bl-lg z-10" style={{ borderColor: "#cc0000" }} />
-              <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 rounded-br-lg z-10" style={{ borderColor: "#cc0000" }} />
-
+              {/* Corner brackets */}
+              <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 z-10" style={{ borderColor: "#cc0000" }} />
+              <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 z-10" style={{ borderColor: "#cc0000" }} />
+              <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 z-10" style={{ borderColor: "#cc0000" }} />
+              <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 z-10" style={{ borderColor: "#cc0000" }} />
               <Scanner
                 formats={["qr_code"]}
                 paused={pause}
@@ -339,40 +322,25 @@ const QRCodeScanner = () => {
             </div>
           )}
 
-          {/* Question */}
+          {/* ── QUESTION ── */}
           {questionData && (
             <div
-              className="rounded-xl p-4"
-              style={{
-                background: "rgba(0,0,0,0.7)",
-                border: "1px solid rgba(139,0,0,0.4)",
-              }}
+              className="rounded-xl p-3"
+              style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(139,0,0,0.4)" }}
             >
-              <p
-                className="text-sm font-bold font-mono mb-3 leading-relaxed"
-                style={{ color: "#e8d5c4" }}
-              >
+              <p className="text-sm font-bold font-mono mb-3 leading-relaxed" style={{ color: "#e8d5c4" }}>
                 📋 {questionData.text}
               </p>
-              <div className="grid grid-cols-1 gap-2">
+              <div className="flex flex-col gap-2">
                 {questionData.options.map((opt, idx) => (
                   <button
                     key={idx}
                     onClick={() => setSelectedAnswer(opt)}
-                    className="px-3 py-2.5 rounded-lg text-left font-mono text-sm transition-all"
+                    className="w-full px-3 py-2.5 rounded-lg text-left font-mono text-sm transition-all"
                     style={
                       selectedAnswer === opt
-                        ? {
-                            background: "rgba(139,0,0,0.3)",
-                            color: "#e8d5c4",
-                            border: "1px solid rgba(200,0,0,0.7)",
-                            boxShadow: "0 0 10px rgba(139,0,0,0.3)",
-                          }
-                        : {
-                            background: "rgba(15,0,5,0.8)",
-                            color: "#9a8a7a",
-                            border: "1px solid rgba(139,0,0,0.2)",
-                          }
+                        ? { background: "rgba(139,0,0,0.3)", color: "#e8d5c4", border: "1px solid rgba(200,0,0,0.7)", boxShadow: "0 0 8px rgba(139,0,0,0.3)" }
+                        : { background: "rgba(15,0,5,0.8)", color: "#9a8a7a", border: "1px solid rgba(139,0,0,0.2)" }
                     }
                   >
                     <span className="mr-2 font-bold" style={{ color: "#8b0000" }}>
@@ -383,38 +351,30 @@ const QRCodeScanner = () => {
                 ))}
               </div>
               {showHint && (
-                <p className="mt-3 text-xs font-mono px-3 py-2 rounded-lg" style={{ color: "#c9a84c", background: "rgba(50,35,0,0.4)", border: "1px solid rgba(201,168,76,0.2)" }}>
+                <p className="mt-3 text-xs font-mono px-3 py-2 rounded-lg" style={{ color: "#c9a84c", background: "rgba(40,28,0,0.5)", border: "1px solid rgba(201,168,76,0.2)" }}>
                   🔍 {showHint}
                 </p>
               )}
               <button
                 onClick={handleSubmitAnswer}
-                className="mt-3 w-full py-3 rounded-xl font-extrabold font-mono text-sm tracking-widest uppercase transition-all"
-                style={{
-                  background: "linear-gradient(135deg, #8b0000, #cc0000)",
-                  color: "#fff",
-                  boxShadow: "0 0 16px rgba(139,0,0,0.4)",
-                }}
+                className="mt-3 w-full py-3 rounded-xl font-extrabold font-mono text-sm tracking-widest uppercase"
+                style={{ background: "linear-gradient(135deg,#8b0000,#cc0000)", color: "#fff", boxShadow: "0 0 14px rgba(139,0,0,0.4)" }}
               >
                 ⚖ SUBMIT TESTIMONY
               </button>
             </div>
           )}
 
-          {/* Status message */}
+          {/* ── STATUS MESSAGE ── */}
           <div
-            className="mt-3 text-center text-sm font-bold font-mono rounded-xl px-4 py-2.5"
-            style={{
-              color: "#e8d5c4",
-              background: "rgba(0,0,0,0.6)",
-              border: "1px solid rgba(139,0,0,0.3)",
-            }}
+            className="mt-3 text-center text-sm font-bold font-mono rounded-xl px-3 py-2.5 break-words"
+            style={{ color: "#e8d5c4", background: "rgba(0,0,0,0.6)", border: "1px solid rgba(139,0,0,0.3)" }}
           >
             {message}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
