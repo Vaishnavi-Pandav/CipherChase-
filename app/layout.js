@@ -20,7 +20,7 @@ export const metadata = {
   },
 
   description:
-    "CipherChase is a crime-themed QR evidence trail at Upsurge 2K26. Hunt the clues, crack the case, and race to the top of the most-wanted leaderboard!",
+    "CipherChase is a crime-themed QR evidence trail game for Upsurge 2K26. Scan clues, crack the case, and race to the top of the Most Wanted leaderboard!",
 
   keywords: [
     "CipherChase",
@@ -32,8 +32,8 @@ export const metadata = {
     "treasure hunt",
   ],
 
-  authors: [{ name: "Rishabh Gokhe" }],
-  creator: "Rishabh Gokhe",
+  authors: [{ name: "Vaishnavi Pandav" }],
+  creator: "Vaishnavi Pandav",
   icons: {
     icon: "/CipherChase.jpg",
     apple: "/CipherChase.jpg",

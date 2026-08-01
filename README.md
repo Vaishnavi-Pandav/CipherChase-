@@ -154,4 +154,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## 👥 Developed by
 
-**COSMOS** — Upsurge 2K26
+**Vaishnavi Pandav** — COSMOS, Upsurge 2K26
