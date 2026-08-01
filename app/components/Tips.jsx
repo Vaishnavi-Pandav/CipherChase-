@@ -1,95 +1,57 @@
-import React from "react";
 import { AlertTriangle, Info } from "lucide-react";
 
-const Tips = () => {
+export default function Tips() {
   return (
-    <div
-      className="mt-10 px-6 sm:px-10 py-8 rounded-2xl text-gray-200 max-w-3xl mx-auto"
-      style={{
-        background: "rgba(10,0,8,0.95)",
-        border: "2px solid rgba(139,0,0,0.5)",
-        boxShadow: "0 0 24px rgba(139,0,0,0.18)",
-      }}
-    >
-      {/* Evidence file label */}
-      <div className="flex justify-center mb-4">
-        <span
-          className="text-xs font-mono px-4 py-1 rounded-full tracking-widest"
-          style={{
-            background: "rgba(139,0,0,0.2)",
-            border: "1px solid rgba(139,0,0,0.5)",
-            color: "rgba(201,168,76,0.85)",
-          }}
-        >
+    <section className="w-full rounded-2xl overflow-hidden"
+      style={{ background:"rgba(10,0,8,0.92)", border:"1px solid rgba(139,0,0,0.45)", boxShadow:"0 0 24px rgba(139,0,0,0.1)" }}>
+      <div className="px-4 sm:px-6 py-4 border-b flex items-center gap-2" style={{ borderColor:"rgba(139,0,0,0.2)" }}>
+        <span className="text-xs font-mono px-3 py-1 rounded-full tracking-widest"
+          style={{ background:"rgba(139,0,0,0.15)", border:"1px solid rgba(139,0,0,0.4)", color:"rgba(201,168,76,0.85)" }}>
           📁 CASE FILE — CLASSIFIED
         </span>
       </div>
 
-      <h1
-        className="text-2xl font-extrabold font-mono text-center mb-6 tracking-wider uppercase"
-        style={{
-          color: "#e8d5c4",
-          textShadow: "0 0 10px rgba(139,0,0,0.8)",
-        }}
-      >
-        — DETECTIVE&apos;S BRIEFING —
-      </h1>
+      <div className="p-4 sm:p-6 space-y-5">
+        <h1 className="text-lg sm:text-xl font-extrabold font-mono text-center tracking-wider uppercase"
+          style={{ color:"#e8d5c4", textShadow:"0 0 10px rgba(139,0,0,0.7)" }}>
+          — Detective&apos;s Briefing —
+        </h1>
 
-      <div className="mb-6">
-        <div className="flex items-center mb-3">
-          <AlertTriangle
-            className="w-6 h-6 mr-2"
-            style={{ color: "#cc0000", filter: "drop-shadow(0 0 6px rgba(139,0,0,0.8))" }}
-          />
-          <h2 className="text-xl font-bold font-mono" style={{ color: "#cc0000" }}>
-            ⚠ VIOLATIONS
-          </h2>
+        {/* Violations */}
+        <div className="rounded-xl p-4 space-y-2"
+          style={{ background:"rgba(139,0,0,0.07)", border:"1px solid rgba(139,0,0,0.25)" }}>
+          <div className="flex items-center gap-2 mb-2">
+            <AlertTriangle size={16} style={{ color:"#cc0000" }} />
+            <span className="font-bold font-mono text-sm" style={{ color:"#cc0000" }}>VIOLATIONS</span>
+          </div>
+          {[
+            ["Wrong QR scan", "2 min penalty"],
+            ["Wrong answer", "1 min penalty"],
+            ["Wrong sequence", "2 min penalty"],
+          ].map(([label, penalty]) => (
+            <div key={label} className="flex justify-between items-center text-sm font-mono py-1"
+              style={{ borderBottom:"1px solid rgba(139,0,0,0.1)", color:"rgba(220,160,160,0.85)" }}>
+              <span>{label}</span>
+              <span className="font-bold" style={{ color:"#cc0000" }}>{penalty}</span>
+            </div>
+          ))}
         </div>
-        <ul className="list-disc list-inside space-y-2 text-base font-mono" style={{ color: "rgba(220,160,160,0.9)" }}>
-          <li>
-            Wrong QR scan →{" "}
-            <span className="font-bold" style={{ color: "#cc0000" }}>
-              2 min penalty
-            </span>
-          </li>
-          <li>
-            Wrong answer →{" "}
-            <span className="font-bold" style={{ color: "#cc0000" }}>
-              1 min penalty
-            </span>
-          </li>
-          <li>
-            Wrong sequence →{" "}
-            <span className="font-bold" style={{ color: "#cc0000" }}>
-              2 min penalty
-            </span>
-          </li>
-        </ul>
-      </div>
 
-      <div>
-        <div className="flex items-center mb-3">
-          <Info
-            className="w-6 h-6 mr-2"
-            style={{ color: "#c9a84c", filter: "drop-shadow(0 0 6px rgba(201,168,76,0.8))" }}
-          />
-          <h2 className="text-xl font-bold font-mono" style={{ color: "#c9a84c" }}>
-            🔍 INTEL
-          </h2>
+        {/* Intel */}
+        <div className="rounded-xl p-4 space-y-2"
+          style={{ background:"rgba(201,168,76,0.05)", border:"1px solid rgba(201,168,76,0.2)" }}>
+          <div className="flex items-center gap-2 mb-2">
+            <Info size={16} style={{ color:"#c9a84c" }} />
+            <span className="font-bold font-mono text-sm" style={{ color:"#c9a84c" }}>INTEL</span>
+          </div>
+          {[
+            "If QR is not scanning, refresh the page.",
+            "Scanner might take a few seconds to detect.",
+          ].map((tip) => (
+            <p key={tip} className="text-sm font-mono" style={{ color:"rgba(201,168,76,0.7)" }}>• {tip}</p>
+          ))}
         </div>
-        <ul className="list-disc list-inside space-y-2 text-base font-mono" style={{ color: "rgba(201,168,76,0.75)" }}>
-          <li>
-            If QR is not scanning, just{" "}
-            <span className="font-bold" style={{ color: "#c9a84c" }}>
-              refresh
-            </span>{" "}
-            the page.
-          </li>
-          <li>Scanner might take a few seconds to detect the QR.</li>
-        </ul>
       </div>
-    </div>
+    </section>
   );
-};
-
-export default Tips;
+}

@@ -3,98 +3,58 @@ import Image from "next/image";
 
 const Header = () => {
   return (
-    <div className="w-full flex flex-col items-center justify-center mb-5 relative px-4">
-      {/* Crime scene tape banner */}
-      <div className="w-full max-w-2xl mb-4 overflow-hidden">
-        <div
-          className="text-center text-xs font-extrabold tracking-[0.3em] py-1 px-4 text-black"
-          style={{
-            background: "repeating-linear-gradient(45deg, #c9a84c, #c9a84c 12px, #0a0008 12px, #0a0008 24px)",
-          }}
-        >
+    <header className="w-full flex flex-col items-center gap-4 pt-2">
+      {/* Crime tape banner */}
+      <div className="w-full max-w-xl overflow-hidden rounded-sm">
+        <div className="text-center text-xs font-extrabold tracking-[0.25em] py-1.5 text-black select-none"
+          style={{ background: "repeating-linear-gradient(45deg,#c9a84c,#c9a84c 10px,#070005 10px,#070005 20px)" }}>
           ⚠ CRIME SCENE — DO NOT CROSS ⚠
         </div>
       </div>
 
-      <div className="w-full flex items-center justify-center">
+      {/* Logos + Title */}
+      <div className="flex items-center justify-center gap-3 sm:gap-6 w-full">
         {/* Upsurge logo */}
-        <div
-          className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 hover:scale-110 transition-transform"
-          style={{
-            boxShadow: "0 0 20px rgba(139,0,0,0.7)",
-            borderRadius: "12px",
-          }}
-        >
-          <Image
-            src="/img/upsurge-logo.jpeg"
-            alt="Upsurge Logo"
-            width={128}
-            height={128}
-            className="w-full h-full object-contain rounded-xl"
-          />
+        <div className="flex-shrink-0 w-16 h-16 sm:w-24 sm:h-24 float"
+          style={{ filter: "drop-shadow(0 0 14px rgba(139,0,0,0.8))" }}>
+          <Image src="/img/upsurge-logo.jpeg" alt="Upsurge" width={96} height={96}
+            className="w-full h-full object-contain rounded-xl" />
         </div>
 
         {/* Title */}
-        <div className="mx-4 text-center">
-          <h1
-            className="text-3xl sm:text-5xl font-extrabold font-mono tracking-wider uppercase"
+        <div className="text-center flex-1 min-w-0">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl font-extrabold font-mono tracking-wider uppercase leading-tight"
             style={{
               color: "#e8d5c4",
-              textShadow: "0 0 16px rgba(139,0,0,0.9), 0 0 32px rgba(139,0,0,0.4), 2px 2px 0px #000",
-              WebkitTextStroke: "1px rgba(139,0,0,0.5)",
-            }}
-          >
+              textShadow: "0 0 20px rgba(139,0,0,0.9), 0 0 40px rgba(139,0,0,0.4), 2px 2px 0 #000",
+              WebkitTextStroke: "1px rgba(139,0,0,0.4)",
+            }}>
             Cipher Chase
           </h1>
-          {/* Blood drip under title */}
-          <div className="flex justify-center gap-3 mt-1">
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="rounded-b-full"
-                style={{
-                  width: `${4 + i % 3}px`,
-                  height: `${10 + (i * 4) % 14}px`,
-                  background: "linear-gradient(to bottom, #8b0000, #4a0000)",
-                  boxShadow: "0 0 4px rgba(139,0,0,0.6)",
-                  opacity: 0.8,
-                }}
-              />
+          {/* Blood drips */}
+          <div className="flex justify-center gap-2 mt-1">
+            {[8,12,6,14,10].map((h, i) => (
+              <div key={i} className="rounded-b-full w-1"
+                style={{ height: `${h}px`, background: "linear-gradient(to bottom,#8b0000,#3a0000)", opacity: 0.85 }} />
             ))}
           </div>
+          <p className="mt-2 text-xs sm:text-sm font-mono tracking-widest" style={{ color: "rgba(201,168,76,0.8)" }}>
+            🔍 Hunt &nbsp;•&nbsp; 🧩 Decode &nbsp;•&nbsp; 💀 Survive
+          </p>
         </div>
 
         {/* Cosmos logo */}
-        <div
-          className="w-24 h-24 sm:w-32 sm:h-32 flex-shrink-0 hover:scale-110 transition-transform"
-          style={{
-            boxShadow: "0 0 16px rgba(201,168,76,0.5)",
-            borderRadius: "12px",
-          }}
-        >
-          <Image
-            src="/img/cosmos-logo.png"
-            alt="Cosmos Logo"
-            width={128}
-            height={128}
-            className="w-full h-full object-contain rounded-xl"
-          />
+        <div className="flex-shrink-0 w-16 h-16 sm:w-24 sm:h-24 float"
+          style={{ filter: "drop-shadow(0 0 12px rgba(201,168,76,0.5))", animationDelay: "1s" }}>
+          <Image src="/img/cosmos-logo.png" alt="Cosmos" width={96} height={96}
+            className="w-full h-full object-contain rounded-xl" />
         </div>
       </div>
 
-      <p
-        className="mt-4 text-sm sm:text-lg font-semibold tracking-wider text-center font-mono"
-        style={{ color: "rgba(201,168,76,0.85)" }}
-      >
-        🔍 Hunt • 🧩 Decode • 💀 Survive
-      </p>
-      <p
-        className="mt-1 text-xs sm:text-sm font-mono tracking-widest"
-        style={{ color: "rgba(139,0,0,0.7)" }}
-      >
+      <p className="text-xs font-mono tracking-widest" style={{ color: "rgba(139,0,0,0.6)" }}>
         [ UPSURGE_2K26 — EVIDENCE_TRAIL.exe ]
       </p>
-    </div>
+    </header>
   );
 };
 
