@@ -63,14 +63,14 @@ export default function Leaderboard() {
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse" style={{ minWidth:"360px" }}>
+      <div className="overflow-x-auto" style={{ WebkitOverflowScrolling: "touch" }}>
+        <table className="w-full text-left border-collapse" style={{ minWidth:"420px" }}>
           <thead style={{ background:"rgba(139,0,0,0.1)", color:"rgba(201,168,76,0.8)" }}>
             <tr className="text-xs sm:text-sm font-mono">
               <th className="px-4 py-3">Rank</th>
               <th className="px-4 py-3">Team</th>
               <th className="px-4 py-3">Clues</th>
-              <th className="px-4 py-3 hidden sm:table-cell">Last Found</th>
+              <th className="px-4 py-3">Last Found</th>
             </tr>
           </thead>
           <tbody>
@@ -105,7 +105,7 @@ export default function Leaderboard() {
                 <td className="px-4 py-3 font-bold" style={{ color: team.disqualified ? "rgba(220,38,38,0.5)" : "#cc0000" }}>
                   {team.disqualified ? "—" : team.score}
                 </td>
-                <td className="px-4 py-3 hidden sm:table-cell" style={{ color:"rgba(200,180,160,0.45)" }}>
+                <td className="px-4 py-3 font-mono whitespace-nowrap" style={{ color:"rgba(200,180,160,0.45)" }}>
                   {formatTime(team.latestScanTime)}
                 </td>
               </tr>
