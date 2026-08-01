@@ -19,14 +19,11 @@ export async function POST(req) {
 
     // If penalty active → block
     if (teamDoc?.penaltyUntil && new Date() < new Date(teamDoc.penaltyUntil)) {
-      const secondsLeft = Math.ceil(
-        (new Date(teamDoc.penaltyUntil) - new Date()) / 1000
-      );
       return Response.json(
         {
           success: false,
-          message: `⏳ Penalty active! Wait ${secondsLeft} seconds.`,
-          penaltySeconds: secondsLeft
+          message: `⏳ Penalty active! Wait.`,
+          penaltyUntil: new Date(teamDoc.penaltyUntil).toISOString(),
         },
         { status: 403 }
       );
@@ -44,7 +41,7 @@ export async function POST(req) {
         {
           success: false,
           message: `🚫 Wrong team's QR! Penalty ${PENALTY_MINUTES} minutes.`,
-          penaltySeconds: PENALTY_MINUTES * 60
+          penaltyUntil: penaltyUntil.toISOString(),
         },
         { status: 400 }
       );
@@ -70,7 +67,7 @@ export async function POST(req) {
         {
           success: false,
           message: `⏭️ Wrong order! Penalty ${PENALTY_MINUTES} minutes.`,
-          penaltySeconds: PENALTY_MINUTES * 60
+          penaltyUntil: penaltyUntil.toISOString(),
         },
         { status: 400 }
       );
