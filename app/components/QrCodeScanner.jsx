@@ -54,52 +54,13 @@ const QRCodeScanner = () => {
     return () => document.removeEventListener("visibilitychange", handleVisibilityChange);
   }, []);
 
-  // ── ANTI-CHEAT: Screenshot / screen capture detection ──
-  const questionDataRef = useRef(null);
-  useEffect(() => { questionDataRef.current = questionData; }, [questionData]);
-
-  const applyDisqualify = (reason) => {
-    const currentTeamId = teamIdRef.current;
-    if (!currentTeamId) return;
-    setDisqualified(true);
-    setQuestionData(null);
-    setShowHint("");
-    showMessage("🚫 Disqualified!");
-    fetch("/api/disqualify", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ teamId: currentTeamId, reason }),
-    }).catch(() => {});
-  };
-
-  useEffect(() => {
-    // Block PrintScreen key
-    const handleKeyDown = (e) => {
-      if (!questionDataRef.current) return;
-      if (e.key === "PrintScreen" || (e.ctrlKey && e.key === "p") || (e.metaKey && e.key === "p")) {
-        e.preventDefault();
-        applyDisqualify("Screenshot attempt detected");
-      }
-    };
-
-    // Block right-click on question area
-    const handleContextMenu = (e) => {
-      if (questionDataRef.current) e.preventDefault();
-    };
-
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("contextmenu", handleContextMenu);
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("contextmenu", handleContextMenu);
-    };
-  }, []);
-
   useEffect(() => {
     if (showTeamInput && inputRef.current) {
       setTimeout(() => inputRef.current?.focus(), 150);
     }
   }, [showTeamInput]);
+
+  // Penalty countdown
   useEffect(() => {
     if (!penaltyUntil) {
       clearInterval(timerRef.current);
@@ -436,15 +397,7 @@ const QRCodeScanner = () => {
           {questionData && (
             <div
               className="rounded-xl p-3"
-              style={{
-                background: "rgba(0,0,0,0.7)",
-                border: "1px solid rgba(139,0,0,0.4)",
-                userSelect: "none",
-                WebkitUserSelect: "none",
-                WebkitTouchCallout: "none",
-                pointerEvents: "auto",
-              }}
-              onContextMenu={(e) => e.preventDefault()}
+              style={{ background: "rgba(0,0,0,0.7)", border: "1px solid rgba(139,0,0,0.4)" }}
             >
               <p className="text-sm font-bold font-mono mb-3 leading-relaxed" style={{ color: "#e8d5c4" }}>
                 📋 {questionData.text}
