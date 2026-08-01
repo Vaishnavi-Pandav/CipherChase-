@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import TeamData from "./models/SecondaryTeam.js";
-`1`;
-const teams = [
+
+export const teams = [
   {
     teamId: "T1X9A2",
     qrId: "Oj5PLQr6",
@@ -878,29 +878,4 @@ const teams = [
   // },
 ];
 
-async function insertTeams() {
-  try {
-    const MONGO_URI = process.env.MONGO_URI;
-    if (!MONGO_URI) throw new Error("Missing MONGO_URI in environment");
-
-    await mongoose.connect(MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-
-    console.log("✅ MongoDB connected");
-
-    await TeamData.deleteMany({});
-    console.log("🗑 Existing team data cleared");
-
-    await TeamData.insertMany(teams);
-    console.log("✅ Teams inserted successfully");
-
-    await mongoose.disconnect();
-  } catch (error) {
-    console.error("❌ Error inserting teams:", error);
-    await mongoose.disconnect();
-  }
-}
-
-insertTeams();
+// Seed logic moved to runSeed.mjs
