@@ -115,7 +115,6 @@ CipherChase/
 │   └── img/                 # Logos (upsurge, cosmos)
 └── seedTeams.js             # Team data (10 teams, 7 QRs each)
 ```
-
 ---
 
 ## 🎮 How to Play
@@ -129,22 +128,7 @@ CipherChase/
 
 ---
 
-## 🏆 Teams
 
-| Team ID | Name |
-|---|---|
-| T1X9A2 | Team-1 |
-| T2B7K5 | Team-2 |
-| T3M4Q8 | Team-3 |
-| T4R6Z1 | Team-4 |
-| T5L8D3 | Team-5 |
-| T6N2W7 | Team-6 |
-| T7P9H4 | Team-7 |
-| T8C5J6 | Team-8 |
-| T9F3V2 | Team-9 |
-| T10G8M5 | Team-10 |
-
----
 
 ## 🔒 License
 
