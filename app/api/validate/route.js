@@ -17,13 +17,14 @@ export async function POST(req) {
 
     const teamDoc = await TeamData.findOne({ teamId, qrId });
 
-    // If penalty active → block
-    if (teamDoc?.penaltyUntil && new Date() < new Date(teamDoc.penaltyUntil)) {
+    // If penalty active → block (check separately by teamId only)
+    const anyTeamDoc = await TeamData.findOne({ teamId });
+    if (anyTeamDoc?.penaltyUntil && new Date() < new Date(anyTeamDoc.penaltyUntil)) {
       return Response.json(
         {
           success: false,
           message: `⏳ Penalty active! Wait.`,
-          penaltyUntil: new Date(teamDoc.penaltyUntil).toISOString(),
+          penaltyUntil: new Date(anyTeamDoc.penaltyUntil).toISOString(),
         },
         { status: 403 }
       );
@@ -32,11 +33,10 @@ export async function POST(req) {
     // Case 1: QR not assigned to this team → penalty
     if (!teamDoc) {
       const penaltyUntil = new Date(Date.now() + PENALTY_MINUTES * 60 * 1000);
-      await TeamData.updateOne(
-        { teamId },
-        { $set: { penaltyUntil } }
-      );
-
+      if (anyTeamDoc) {
+        anyTeamDoc.penaltyUntil = penaltyUntil;
+        await anyTeamDoc.save();
+      }
       return Response.json(
         {
           success: false,
