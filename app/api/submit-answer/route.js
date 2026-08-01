@@ -68,7 +68,7 @@ export async function POST(req) {
         {
           success: false,
           message: `❌ Incorrect answer! Penalty applied ${PENALTY_MINUTES} minutes.`,
-          penaltyUntil: penaltyEnd,
+          penaltyUntil: penaltyEnd.toISOString(),
         },
         { status: 200 }
       );

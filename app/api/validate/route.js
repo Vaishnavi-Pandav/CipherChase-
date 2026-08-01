@@ -15,10 +15,10 @@ export async function POST(req) {
       );
     }
 
-    const teamDoc = await TeamData.findOne({ teamId, qrId });
-
-    // If penalty active → block (check separately by teamId only)
+    // Single query by teamId only (covers penalty check + wrong QR check)
     const anyTeamDoc = await TeamData.findOne({ teamId });
+
+    // If penalty active → block immediately
     if (anyTeamDoc?.penaltyUntil && new Date() < new Date(anyTeamDoc.penaltyUntil)) {
       return Response.json(
         {
@@ -29,6 +29,9 @@ export async function POST(req) {
         { status: 403 }
       );
     }
+
+    // Find the specific team+QR combo
+    const teamDoc = await TeamData.findOne({ teamId, qrId });
 
     // Case 1: QR not assigned to this team → penalty
     if (!teamDoc) {
@@ -47,9 +50,7 @@ export async function POST(req) {
       );
     }
 
-    const currentIndex = teamDoc.codes.findIndex(
-      (code) => code.value === qrValue
-    );
+    const currentIndex = teamDoc.codes.findIndex((code) => code.value === qrValue);
     if (currentIndex === -1) {
       return Response.json(
         { success: false, message: "❓ QR value not found for this team" },
@@ -62,7 +63,6 @@ export async function POST(req) {
       const penaltyUntil = new Date(Date.now() + PENALTY_MINUTES * 60 * 1000);
       teamDoc.penaltyUntil = penaltyUntil;
       await teamDoc.save();
-
       return Response.json(
         {
           success: false,
@@ -75,14 +75,10 @@ export async function POST(req) {
 
     const code = teamDoc.codes[currentIndex];
 
-    // Already scanned → show hint
+    // Already scanned → show hint again
     if (code.scanned) {
       return Response.json(
-        {
-          success: true,
-          message: "🔍 QR already completed. Here's your hint again.",
-          hint: code.hint
-        },
+        { success: true, message: "🔍 Already completed. Here's your hint.", hint: code.hint },
         { status: 200 }
       );
     }
@@ -99,12 +95,8 @@ export async function POST(req) {
     return Response.json(
       {
         success: true,
-        message: "✅ QR validated! Answer the question to proceed.",
-        question: {
-          text: code.question,
-          options: code.options,
-          // hint: code.hint
-        }
+        message: "✅ QR validated! Answer the question.",
+        question: { text: code.question, options: code.options },
       },
       { status: 200 }
     );
