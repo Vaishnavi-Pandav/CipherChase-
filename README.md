@@ -1,171 +1,157 @@
-![Project Banner](https://res.cloudinary.com/dnytagac4/image/upload/v1756237980/HuntSecrets_Banner_p9h99g.png)
+# 🔍 CipherChase — Upsurge 2K26 Crime Hunt
 
-# HuntSecrets (QR Hunt App)
+> A crime-themed QR evidence trail game built for **Upsurge 2K26** — hunt the clues, crack the case, and race to the top of the Most Wanted leaderboard.
 
-## Description
+🌐 **Live:** [upsurge-cipherchase.vercel.app](https://upsurge-cipherchase.vercel.app/)
 
-HuntSecrets is an immersive, Web-based QR treasure hunt game designed to challenge your problem-solving and teamwork skills. Participants scan QR codes to uncover hidden clues, solve puzzles, and race against the clock to claim victory. With real-time leaderboards, penalty-based scoring, and a user-friendly interface, HuntSecrets offers an engaging experience for events, team-building activities, and community gatherings.
+---
 
-## 📸 Screenshots
+## 📖 About
 
-### Home Scanner | Progress | Game Guide
-<p align="left">
-  <img src="https://res.cloudinary.com/dnytagac4/image/upload/v1756239116/HuntSecrets_Homepage_bks4wz.png" width="30%" />
-  <img src="https://res.cloudinary.com/dnytagac4/image/upload/v1756239113/HuntSecrets_Scanner_rqatrw.png" width="30%" />
-  <img src="https://res.cloudinary.com/dnytagac4/image/upload/v1756239100/HuntSecrets_Game_Guide_gjgp2u.png" width="30%" />
-</p>
+CipherChase is a real-time QR-based treasure hunt game designed for Upsurge 2K26. Teams scan QR codes placed across the venue, answer questions to unlock clues, and race to complete all 7 evidence checkpoints before any other team. The game features a penalty system, live leaderboard, and tab-switch detection to ensure fair play.
 
-### Leaderboard | Question
-<p align="left">
-  <img src="https://res.cloudinary.com/dnytagac4/image/upload/v1756239098/HuntSecrets_Leaderboard_xq7wbx.png" width="30%" />
-  <img src="https://res.cloudinary.com/dnytagac4/image/upload/v1756239078/HuntSecrets_Questions_lcpb1o.png" width="30%" />
-</p>
-
-# Table of Contents
-
-  - [Features](#-features)
-  - [Tech Stack](#️-tech-stack)
-  - [Setup Instructions](#️-setup-instructions)
-    - [Prerequisites](#prerequisites)
-    - [Installation](#installation)
-  - [Live Preview](#-live-preview)
-  - [Acknowledgments](#-acknowledgments)
-  - [Code of Conduct](#-code-of-conduct)
-  - [License](#-license)
-  - [Contribution Guidelines](#-contribution-guidelines)
-  - [Author](#-author)
-  - [About Me](#-about-me)
-  - [Feedback](#-feedback)
-  - [Connect with Me](#-connect-with-me)
+---
 
 ## ✨ Features
 
-- **QR Code Scanning:** Seamlessly scan QR codes to reveal clues and progress through the game.  
-- **Penalty System:** Strategic penalties for incorrect answers and sequences add excitement and challenge.  
-- **Leaderboard:** Track your team’s performance and compare with others in real-time.  
-- **Game Guide:** Access essential tips and warnings to navigate the game effectively.  
-- **Event Hosting:** Easily set up and host your own QR Treasure Hunt event.
+- 📷 **QR Code Scanner** — scan evidence QR codes directly from the browser camera
+- 🧩 **MCQ Questions** — each QR unlocks a question; correct answer reveals the next clue
+- 🏴 **Live Leaderboard** — auto-refreshes every 30 seconds, sorted by score then time
+- 🔍 **Team Progress Tracker** — visual evidence trail timeline per team
+- ⚖️ **Penalty System** — wrong scan, wrong answer, wrong order, tab switch
+- 🚨 **Tab Switch Detection** — switching tabs or minimizing triggers a 10-minute penalty
+- 📱 **Mobile Responsive** — fully optimized for phones
+- 🎨 **Crime / Dark Thriller Theme** — Upsurge 2K26 branded UI
+
+---
+
+## ⚖️ Penalty Rules
+
+| Violation | Penalty |
+|---|---|
+| Wrong QR scan | 2 min |
+| Wrong answer | 1 min |
+| Wrong sequence | 2 min |
+| Tab switch / minimize | 10 min |
+| QR scanned by external app | Disqualified |
+| Screen captured by other camera | Disqualified |
+
+---
 
 ## 🖥️ Tech Stack
 
-- **Frontend:** React, Tailwind, JavaScript
-- **Backend:** Node.js, Express.js
-- **Database:** MongoDB (MongoDB Atlas)
+| Layer | Technology |
+|---|---|
+| Framework | Next.js 15 (App Router) |
+| Frontend | React 19, Tailwind CSS v4 |
+| Database | MongoDB Atlas |
+| ODM | Mongoose v8 |
+| QR Scanner | @yudiel/react-qr-scanner |
+| Icons | Lucide React |
+| Deployment | Vercel |
 
-## ⚙️ Setup Instructions
+---
+
+## ⚙️ Setup
 
 ### Prerequisites
-
-- [Node.js](https://nodejs.org/)
-- [npm](https://www.npmjs.com/)
-- [MongoDB](https://www.mongodb.com/)
+- Node.js 18+
+- MongoDB Atlas account
 
 ### Installation
 
-1. **Clone the Repository:**
-   ```bash
-   git clone https://github.com/rishabhgokhe/HuntSecrets.git
+```bash
+# Clone
+git clone https://github.com/Vaishnavi-Pandav/CipherChase-.git
+cd CipherChase-
 
-2. **Navigate to Repository:**
-    ```bash
-    cd HuntSecrets
+# Install dependencies
+npm install
 
-3. **Install Node Modules:**
-    ```bash
-    npm install
+# Create environment file
+echo "MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/Treasure-Hunt?retryWrites=true&w=majority" > .env.local
 
-4. **Setup Environment Variables:**
-   Create a `.env.local` file in the main directory and add the following: 
-   ```plaintext
-   MONGODB_URI=<your-mongodb-connection-string>
+# Run dev server
+npm run dev
+```
 
-5. **Run Project:**
-    ```bash
-    npm run dev
+Open [http://localhost:3000](http://localhost:3000)
 
-6. **Access the Application:**
-   Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
+### Database Setup
 
-## 🌐 Live Preview
+1. Create a MongoDB Atlas cluster
+2. Create database: `Treasure-Hunt`, collection: `Team-Codes`
+3. Add your connection string to `.env.local`
+4. Seed team data using `seedTeams.js` or the `/api/seed` temporary route
 
-HuntSecrets is live on Vercel: [HuntSecrets Live](https://upsurge-cipherchase.vercel.app/)
+---
 
+## 🗂️ Project Structure
 
-## 🙌 Acknowledgments
+```
+CipherChase/
+├── app/
+│   ├── api/
+│   │   ├── leaderboard/     # GET leaderboard sorted by score
+│   │   ├── validate/        # POST validate scanned QR
+│   │   ├── submit-answer/   # POST check answer + mark scanned
+│   │   ├── team-progress/   # GET team's code trail
+│   │   └── tab-penalty/     # POST apply tab-switch penalty
+│   ├── components/
+│   │   ├── Header.jsx
+│   │   ├── QrCodeScanner.jsx
+│   │   ├── Leaderboard.jsx
+│   │   ├── TeamProgress.jsx
+│   │   ├── Tips.jsx
+│   │   └── Footer.jsx
+│   ├── globals.css
+│   ├── layout.js
+│   └── page.js
+├── models/
+│   └── SecondaryTeam.js     # Team-Codes mongoose schema
+├── utils/
+│   └── db.js                # MongoDB connection helper
+├── public/
+│   └── img/                 # Logos (upsurge, cosmos)
+└── seedTeams.js             # Team data (10 teams, 7 QRs each)
+```
 
-- [React](https://react.dev/) for the frontend framework
-- [Tailwind CSS](https://tailwindcss.com/) for styling and responsive design
-- [MongoDB](https://www.mongodb.com/) for the database management system
-- [Node.js](https://nodejs.org/) for the JavaScript runtime
-- [@yudiel/react-qr-scanner](https://www.npmjs.com/package/@yudiel/react-qr-scanner) for QR code scanning functionality
+---
 
-## 📜 Code of Conduct
+## 🎮 How to Play
 
-We expect all participants in our community to adhere to our Code of Conduct. Please read the full text [here](CODE_OF_CONDUCT.md).
+1. Open the website on your phone
+2. Enter your **Team ID** when prompted after scanning
+3. Scan the first QR code at your starting location
+4. Answer the question correctly to get the next location hint
+5. Follow the clues in order — scanning out of sequence triggers a penalty
+6. Complete all 7 checkpoints first to win!
 
-<!-- license.md-start -->
+---
+
+## 🏆 Teams
+
+| Team ID | Name |
+|---|---|
+| T1X9A2 | Team-1 |
+| T2B7K5 | Team-2 |
+| T3M4Q8 | Team-3 |
+| T4R6Z1 | Team-4 |
+| T5L8D3 | Team-5 |
+| T6N2W7 | Team-6 |
+| T7P9H4 | Team-7 |
+| T8C5J6 | Team-8 |
+| T9F3V2 | Team-9 |
+| T10G8M5 | Team-10 |
+
+---
+
 ## 🔒 License
 
-This project is licensed under the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)** license.
+MIT License — see [LICENSE](LICENSE) for details.
 
-You are **welcome to contribute** via pull requests and issues, but **commercial use, redistribution, or proprietary modifications** are **strictly prohibited** without explicit permission.
+---
 
-For full license details, refer to the [LICENSE](LICENSE) file.
+## 👥 Developed by
 
-For licensing inquiries or permissions, please contact:
-[![Email Me](https://img.shields.io/badge/Email-Me-black?style=flat&logo=gmail&logoColor=white)](mailto:rishabhgokhe20contact@gmail.com)
-<!-- license.md-end -->
-
-<!-- contribution-guidelines.md-start -->
-## 💡 Contribution Guidelines
-
-Contributions are welcome! Please follow these steps to contribute:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/your-feature`).
-3. Make your changes.
-4. Commit your changes (`git commit -am 'Add some feature'`).
-5. Push to the branch (`git push origin feature/your-feature`).
-6. Create a new Pull Request.
-<!-- contribution-guidelines.md-end -->
-
-<!-- author.md-start -->
-## 👨🏻‍💻 Author
-
-**Rishabh Gokhe**
-
-![Open Source](https://img.shields.io/badge/Open%20Source-Lover-ff69b4?style=flat) ![Build With ❤️](https://img.shields.io/badge/Built%20With-%E2%9D%A4-red?style=flat)
-<!-- author.md-end -->
-
-<!-- about-me.md-start -->
-## 🚀 About Me
-
-Hi there! I'm Rishabh Gokhe, a full-stack developer passionate about building scalable, real-time, and user-friendly applications. I focus on crafting seamless digital experiences using modern technologies like WebSockets, React, and Node.js.
-
-I enjoy exploring new ideas, experimenting with emerging tech, and collaborating with like-minded developers. Whether it's web development, UI/UX design, or optimizing performance, I'm always excited to push boundaries and create impactful solutions.
-
-### My Vision
-
-I believe technology should be intuitive, efficient, and accessible. My goal is to develop applications that enhance communication, productivity, and user experience. From real-time interactions to automation, I strive to build solutions that make a difference.
-
-Feel free to reach out—always open to discussions, collaborations, and learning from fellow developers! 🚀
-<!-- about-me.md-end -->
-
-<!-- feedback.md-start -->
-## 📨 Feedback
-
-Got feedback, suggestions, or ideas? Feel free to reach out! [![Email Me](https://img.shields.io/badge/Email-Me-black?style=flat&logo=gmail&logoColor=white)](mailto:rishabhgokhe20contact@gmail.com)
-<!-- feedback.md-end -->
-
-<!-- connect-with-me.md-start -->
-## <img src="https://i.giphy.com/media/v1.Y2lkPTc5MGI3NjExeWxuNTJlaTIwcWp6Mmx4ODl5dXgxbThqNnI5eWh3YmIwMnZhbWp5MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/7NgYelDPXmzbzxrKsj/giphy.gif" width=40px /> Connect with Me
-
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/rishabh-gokhe-22168b287)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=outline&logoColor=white)](https://portfolio-rishabhgokhe.vercel.app/)
-[![LeetCode](https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=white)](https://leetcode.com/u/rishabh_gokhe/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:rishabhgokhe20contact@gmail.com)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/rishabhgokhe)
-[![Twitter](https://img.shields.io/badge/Twitter-1DA1F2?style=for-the-badge&logo=x&logoColor=white)](https://twitter.com/rishabhgokhe)
-[![Instagram](https://img.shields.io/badge/Instagram-DD2A7B?style=for-the-badge&logo=instagram&logoColor=white)](https://www.instagram.com/rishabh_gokhe)
-
-**Email Address** : [rishabhgokhe20contact@gmail.com](mailto:rishabhgokhe20contact@gmail.com)
-<!-- connect-with-me.md-end -->
+**COSMOS** — Upsurge 2K26
