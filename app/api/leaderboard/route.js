@@ -18,6 +18,7 @@ export async function GET() {
         name: team.name,
         score: scannedCodes.length,
         latestScanTime,
+        disqualified: team.disqualified || false,
       };
     });
 

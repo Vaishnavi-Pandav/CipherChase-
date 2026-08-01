@@ -16,6 +16,7 @@ const QRCodeScanner = () => {
   const [penaltyUntil, setPenaltyUntil] = useState(null);
   const [penaltyRemaining, setPenaltyRemaining] = useState("");
   const [showHint, setShowHint] = useState("");
+  const [disqualified, setDisqualified] = useState(false);
   const timerRef = useRef(null);
   const inputRef = useRef(null);
   const teamIdRef = useRef("");
@@ -91,6 +92,10 @@ const QRCodeScanner = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        if (data.disqualified) {
+          setDisqualified(true);
+          return;
+        }
         if (data.penaltyUntil) {
           setPenaltyUntil(data.penaltyUntil);
           showMessage(data.message);
@@ -364,7 +369,7 @@ const QRCodeScanner = () => {
           )}
 
           {/* ── SCANNER ── */}
-          {!questionData && !penaltyUntil && !showTeamInput && !showHint && (
+          {!questionData && !penaltyUntil && !showTeamInput && !showHint && !disqualified && (
             <div
               className="overflow-hidden rounded-xl relative"
               style={{
@@ -428,6 +433,20 @@ const QRCodeScanner = () => {
               >
                 ⚖ SUBMIT TESTIMONY
               </button>
+            </div>
+          )}
+
+          {/* ── DISQUALIFIED OVERLAY ── */}
+          {disqualified && (
+            <div className="rounded-xl p-6 text-center"
+              style={{ background:"rgba(80,0,0,0.25)", border:"2px solid rgba(220,38,38,0.7)", boxShadow:"0 0 30px rgba(220,38,38,0.3)" }}>
+              <div className="text-4xl mb-3">🚫</div>
+              <h2 className="text-lg font-extrabold font-mono tracking-widest uppercase mb-2" style={{ color:"#dc2626" }}>
+                DISQUALIFIED
+              </h2>
+              <p className="text-xs font-mono" style={{ color:"rgba(220,160,160,0.8)" }}>
+                Your team has been disqualified for a rule violation. Contact the organizers.
+              </p>
             </div>
           )}
 

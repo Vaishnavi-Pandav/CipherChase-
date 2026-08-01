@@ -18,6 +18,14 @@ export async function POST(req) {
     // Single query by teamId only (covers penalty check + wrong QR check)
     const anyTeamDoc = await TeamData.findOne({ teamId });
 
+    // Check if disqualified
+    if (anyTeamDoc?.disqualified) {
+      return Response.json(
+        { success: false, message: "🚫 Your team has been disqualified.", disqualified: true },
+        { status: 403 }
+      );
+    }
+
     // If penalty active → block immediately
     if (anyTeamDoc?.penaltyUntil && new Date() < new Date(anyTeamDoc.penaltyUntil)) {
       return Response.json(

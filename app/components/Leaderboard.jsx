@@ -91,8 +91,20 @@ export default function Leaderboard() {
                     <span className="font-bold" style={{ color:"#e8d5c4" }}>{i+1}</span>
                   </div>
                 </td>
-                <td className="px-4 py-3" style={{ color:"#e8d5c4" }}>{team.name}</td>
-                <td className="px-4 py-3 font-bold" style={{ color:"#cc0000" }}>{team.score}</td>
+                <td className="px-4 py-3" style={{ color: team.disqualified ? "rgba(220,38,38,0.6)" : "#e8d5c4" }}>
+                  <div className="flex items-center gap-2">
+                    {team.name}
+                    {team.disqualified && (
+                      <span className="text-xs font-mono px-1.5 py-0.5 rounded font-bold"
+                        style={{ background:"rgba(220,38,38,0.15)", color:"#dc2626", border:"1px solid rgba(220,38,38,0.4)" }}>
+                        DQ
+                      </span>
+                    )}
+                  </div>
+                </td>
+                <td className="px-4 py-3 font-bold" style={{ color: team.disqualified ? "rgba(220,38,38,0.5)" : "#cc0000" }}>
+                  {team.disqualified ? "—" : team.score}
+                </td>
                 <td className="px-4 py-3 hidden sm:table-cell" style={{ color:"rgba(200,180,160,0.45)" }}>
                   {formatTime(team.latestScanTime)}
                 </td>
