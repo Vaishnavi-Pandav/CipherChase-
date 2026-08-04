@@ -28,7 +28,6 @@ export default function Tips() {
             ["Wrong QR scan", "2 min penalty", false],
             ["Wrong answer", "1 min penalty", false],
             ["Wrong sequence", "2 min penalty", false],
-            ["Tab switch / minimize", "10 min penalty", false],
             ["Screen captured by other camera", "Disqualified ❌", true],
           ].map(([label, penalty, isDisqualify]) => (
             <div key={label} className="flex justify-between items-center text-sm font-mono py-1"

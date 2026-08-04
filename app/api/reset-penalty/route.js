@@ -7,8 +7,8 @@ export async function POST(req) {
     const { teamId } = await req.json();
 
     if (teamId === "ALL") {
-      // Reset all teams
-      const result = await TeamData.updateMany({}, { $set: { penaltyUntil: null } });
+      // Reset all teams — clear penalty only
+      const result = await TeamData.updateMany({}, { $set: { penaltyUntil: null, disqualified: false, disqualifyReason: null } });
       return Response.json({ success: true, message: `Penalty cleared for all ${result.modifiedCount} teams` }, { status: 200 });
     }
 
